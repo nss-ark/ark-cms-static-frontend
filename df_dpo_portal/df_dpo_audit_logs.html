@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Logs - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <!-- ... other nav sections ... -->
+                 <span class="nav-section-title">Reporting & Audit</span>
+                <ul>
+                    <li><a href="df_dpo_reports.html"><span class="material-symbols-outlined">summarize</span> Compliance Reports</a></li>
+                    <li><a href="df_dpo_audit_logs.html" class="active"><span class="material-symbols-outlined">history_edu</span> Audit Logs</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Audit Logs</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar card mb-4">
+                <form id="filterDpoAuditLogsForm" class="d-flex flex-wrap align-center" style="gap: var(--space-md);">
+                    <div class="form-group">
+                        <label for="dpoAuditDateFrom" class="ark-label">Date From:</label>
+                        <input type="date" id="dpoAuditDateFrom" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="dpoAuditDateTo" class="ark-label">Date To:</label>
+                        <input type="date" id="dpoAuditDateTo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="dpoAuditEventType" class="ark-label">Event Type:</label>
+                        <select id="dpoAuditEventType" class="form-control">
+                            <option value="">All Event Types</option>
+                            <option value="login">Login</option>
+                            <option value="consent_action">Consent Action</option>
+                            <option value="dp_request_update">DP Request Update</option>
+                            <option value="notice_update">Notice Update</option>
+                            <option value="breach_report">Breach Reported</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dpoAuditUser" class="ark-label">User/Actor:</label>
+                        <input type="text" id="dpoAuditUser" class="form-control" placeholder="User email or System">
+                    </div>
+                    <div class="form-group">
+                        <label for="dpoAuditDpIdentifier" class="ark-label">DP Identifier:</label>
+                        <input type="text" id="dpoAuditDpIdentifier" class="form-control" placeholder="Email/Phone/ID">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-end; margin-bottom: var(--space-md);">Apply Filters</button>
+                </form>
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Event Type</th>
+                            <th>Actor</th>
+                            <th>Action</th>
+                            <th>Target Entity</th>
+                            <th>Details (Summary)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[YYYY-MM-DD HH:MM:SS]</td>
+                            <td>Notice Update</td>
+                            <td>[DF Admin Name] (Admin)</td>
+                            <td>Notice Version Activated</td>
+                            <td>Notice: [NOTICE_V2.2]</td>
+                            <td>Status changed to Active</td>
+                            <td><button class="btn btn-sm btn-subtle" data-modal-target="dpoAuditLogDetailsModal" data-log-id="dpo_log_001"><span class="material-symbols-outlined icon-only">visibility</span></button></td>
+                        </tr>
+                        <tr>
+                            <td>[YYYY-MM-DD HH:MM:SS]</td>
+                            <td>Consent Action</td>
+                            <td>[dp_user_005@ark.com] (DP)</td>
+                            <td>Consent Withdrawn</td>
+                            <td>ConsentArtifact: [artifact_abc]</td>
+                            <td>Purpose: [MKTG_NEWSLETTER]</td>
+                            <td><button class="btn btn-sm btn-subtle" data-modal-target="dpoAuditLogDetailsModal" data-log-id="dpo_log_002"><span class="material-symbols-outlined icon-only">visibility</span></button></td>
+                        </tr>
+                         <tr>
+                            <td>[YYYY-MM-DD HH:MM:SS]</td>
+                            <td>DP Request Update</td>
+                            <td>[DF DPO Name] (DPO)</td>
+                            <td>Grievance Status to Resolved</td>
+                            <td>Grievance: [GRV_00056]</td>
+                            <td>Resolution details added.</td>
+                           <td><button class="btn btn-sm btn-subtle" data-modal-target="dpoAuditLogDetailsModal" data-log-id="dpo_log_003"><span class="material-symbols-outlined icon-only">visibility</span></button></td>
+                        </tr>
+                        <!-- More placeholder rows -->
+                    </tbody>
+                </table>
+            </div>
+             <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of X</span>
+                <button class="btn btn-subtle"><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- DPO Audit Log Details Modal -->
+    <div class="modal-overlay" id="dpoAuditLogDetailsModal">
+        <div class="modal-container" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Audit Log Details - <span id="dpoAuditLogDetailId"></span></h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Timestamp:</strong> <span id="dpoDetailTimestamp">[YYYY-MM-DD HH:MM:SS]</span></p>
+                <p><strong>Event Type:</strong> <span id="dpoDetailEventType">[Event Type]</span></p>
+                <p><strong>Actor:</strong> <span id="dpoDetailActor">[Actor Name (Role)]</span></p>
+                <p><strong>Action:</strong> <span id="dpoDetailAction">[Action Performed]</span></p>
+                <p><strong>Target Entity:</strong> <span id="dpoDetailTargetEntity">[Type: ID]</span></p>
+                <p><strong>IP Address:</strong> <span id="dpoDetailIpAddress">[IP Address]</span></p>
+                <p><strong>Full Details:</strong></p>
+                <pre id="dpoDetailFullJson" style="background-color: var(--ark-gray-100); padding: var(--space-sm); border-radius: var(--border-radius-sm); max-height: 200px; overflow-y: auto;">{"key": "value", "old_value": "X", "new_value": "Y"}</pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+        document.getElementById('filterDpoAuditLogsForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('DPO Audit Logs filtered (Mock). Table would refresh.');
+        });
+
+        document.querySelectorAll('button[data-modal-target="dpoAuditLogDetailsModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const logId = e.currentTarget.dataset.logId;
+                document.getElementById('dpoAuditLogDetailId').textContent = logId;
+                // Mock populating other fields
+                document.getElementById('dpoDetailTimestamp').textContent = e.currentTarget.closest('tr').cells[0].textContent;
+                document.getElementById('dpoDetailEventType').textContent = e.currentTarget.closest('tr').cells[1].textContent;
+                document.getElementById('dpoDetailActor').textContent = e.currentTarget.closest('tr').cells[2].textContent;
+                document.getElementById('dpoDetailAction').textContent = e.currentTarget.closest('tr').cells[3].textContent;
+                document.getElementById('dpoDetailTargetEntity').textContent = e.currentTarget.closest('tr').cells[4].textContent;
+                document.getElementById('dpoDetailFullJson').textContent = JSON.stringify({
+                    log_id: logId,
+                    raw_details: e.currentTarget.closest('tr').cells[5].textContent,
+                    // ... other mock data
+                }, null, 2);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DP Dashboard - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dp_dashboard.html" class="active"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li><a href="dp_consents.html"><span class="material-symbols-outlined">fact_check</span> My Consents</a></li>
+                    <li><a href="dp_requests.html"><span class="material-symbols-outlined">rule</span> My Rights Requests</a></li>
+                    <li><a href="dp_grievances.html"><span class="material-symbols-outlined">report_problem</span> My Grievances</a></li>
+                    <li><a href="dp_profile.html"><span class="material-symbols-outlined">account_circle</span> My Profile</a></li>
+                    <li><a href="dp_settings.html"><span class="material-symbols-outlined">settings</span> Settings</a></li>
+                    <li><a href="dp_notifications.html"><span class="material-symbols-outlined">notifications</span> Notifications <span class="badge badge-danger" style="margin-left: auto;">3</span></a></li>
+                </ul>
+                <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="dp_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Dashboard</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">DP</div>
+                        <span class="user-name-display ark-body-default">[DP Full Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="dp_profile.html">My Profile</a>
+                        <a href="dp_settings.html">Settings</a>
+                        <div class="divider"></div>
+                        <a href="dp_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="welcome-banner card" style="background-color: var(--ark-blue-50); border-color: var(--ark-blue-200);">
+                <h2 class="ark-h2 welcome-message">Welcome, [DP Full Name]!</h2>
+                <p class="ark-body-default">Here's an overview of your consents and activity. You can manage your consents, submit requests, and update your preferences using the navigation menu.</p>
+            </div>
+
+            <section id="consent-overview">
+                <h2 class="ark-h2">Consent Summary</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg);">
+                    <div class="card text-center">
+                        <span class="material-symbols-outlined" style="font-size: 48px; color: var(--ark-green-500);">check_circle</span>
+                        <h3 class="ark-h3">[X]</h3>
+                        <p class="ark-body-default">Active Consents</p>
+                        <a href="dp_consents.html?status=active" class="btn btn-link mt-2">View Active</a>
+                    </div>
+                    <div class="card text-center">
+                        <span class="material-symbols-outlined" style="font-size: 48px; color: var(--ark-red-500);">cancel</span>
+                        <h3 class="ark-h3">[Y]</h3>
+                        <p class="ark-body-default">Withdrawn Consents</p>
+                        <a href="dp_consents.html?status=withdrawn" class="btn btn-link mt-2">View Withdrawn</a>
+                    </div>
+                    <div class="card text-center">
+                        <span class="material-symbols-outlined" style="font-size: 48px; color: var(--ark-gray-500);">hourglass_disabled</span>
+                        <h3 class="ark-h3">[Z]</h3>
+                        <p class="ark-body-default">Expired Consents</p>
+                        <a href="dp_consents.html?status=expired" class="btn btn-link mt-2">View Expired</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="recent-activity" class="mt-4">
+                <h2 class="ark-h2">Recent Activity</h2>
+                <div class="card">
+                    <ul class="ark-body-default" style="list-style: none; padding: 0;">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">Consent granted to <strong>[Example Corp]</strong> for <strong>[Marketing Emails]</strong> - <span class="ark-body-small">[Date]</span></li>
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">Rights request submitted to <strong>[ABC Ltd]</strong> (Type: Access) - <span class="ark-body-small">[Date]</span></li>
+                        <li style="padding: var(--space-sm) 0;">Grievance status updated to 'Resolved' for complaint against <strong>[XYZ Inc.]</strong> - <span class="ark-body-small">[Date]</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="pending-actions" class="mt-4">
+                <h2 class="ark-h2">Pending Actions</h2>
+                <div class="alert alert-warning">
+                    <span class="material-symbols-outlined">warning</span>
+                    <div>
+                        <strong>Consent renewal required:</strong> Your consent for <strong>[Analytics]</strong> with <strong>[Data Insights Ltd.]</strong> expires in [N] days.
+                        <a href="#" class="btn btn-link">Renew Now</a>
+                    </div>
+                </div>
+                 <div class="alert alert-info mt-2">
+                    <span class="material-symbols-outlined">info</span>
+                    <div>
+                        <strong>Additional information requested:</strong> Your Access Request to <strong>[Services Provider Co.]</strong> requires more details.
+                        <a href="dp_request_details.html" class="btn btn-link">View Request</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Mock user data for dashboard display
+        populateUserSpecificElements("Data Principal User");
+    </script>
+</body>
+</html>

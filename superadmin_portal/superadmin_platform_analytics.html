@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Analytics - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+     <style> /* Same as health for chart placeholder */
+        .chart-placeholder {
+            height: 200px; /* Larger for analytics */
+            background-color: var(--ark-gray-100);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--ark-gray-500);
+            border-radius: var(--border-radius-md);
+            margin-top: var(--space-sm);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+             <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                 <span class="nav-section-title">Ark CMS SuperAdmin</span>
+                <ul>
+                    <li><a href="superadmin_dashboard.html"><span class="material-symbols-outlined">space_dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Tenant Management</span>
+                <ul>
+                    <li><a href="superadmin_data_fiduciaries.html"><span class="material-symbols-outlined">domain</span> Data Fiduciaries</a></li>
+                </ul>
+                <span class="nav-section-title">Platform Management</span>
+                <ul>
+                    <li><a href="superadmin_users.html"><span class="material-symbols-outlined">shield_person</span> SuperAdmin Users</a></li>
+                    <li><a href="superadmin_global_settings.html"><span class="material-symbols-outlined">tune</span> Global Settings</a></li>
+                    <li><a href="superadmin_notification_templates.html"><span class="material-symbols-outlined">text_format</span> Notification Templates</a></li>
+                </ul>
+                <span class="nav-section-title">Monitoring</span>
+                <ul>
+                    <li><a href="superadmin_platform_health.html"><span class="material-symbols-outlined">monitor_heart</span> Platform Health</a></li>
+                    <li><a href="superadmin_platform_analytics.html" class="active"><span class="material-symbols-outlined">signal_cellular_alt</span> Platform Analytics</a></li>
+                    <li><a href="superadmin_system_logs.html"><span class="material-symbols-outlined">plagiarism</span> System Logs</a></li>
+                    <li><a href="superadmin_platform_audit_logs.html"><span class="material-symbols-outlined">admin_panel_settings</span> Platform Audit Logs</a></li>
+                </ul>
+                <!-- ... other SA nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="superadmin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Platform Analytics</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">SA</div>
+                        <span class="user-name-display ark-body-default">[SuperAdmin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="superadmin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar card mb-4">
+                <form id="analyticsDateFilterForm" class="d-flex align-center" style="gap: var(--space-md);">
+                    <div class="form-group">
+                        <label for="analyticsDateFrom" class="ark-label">Date From:</label>
+                        <input type="date" id="analyticsDateFrom" name="analyticsDateFrom" class="form-control" value="2023-01-01">
+                    </div>
+                    <div class="form-group">
+                        <label for="analyticsDateTo" class="ark-label">Date To:</label>
+                        <input type="date" id="analyticsDateTo" name="analyticsDateTo" class="form-control" value="2023-12-31">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-end; margin-bottom: var(--space-md);">Apply Filter</button>
+                </form>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
+                <div class="card">
+                    <h3 class="ark-h3">Total Data Fiduciaries</h3>
+                    <div class="chart-placeholder">Trend Chart: DF Count Over Time</div>
+                    <p class="ark-body-default text-center mt-2">Current: <strong id="totalDfCount">150</strong></p>
+                </div>
+                <div class="card">
+                    <h3 class="ark-h3">Total Data Principals (Platform-wide)</h3>
+                    <div class="chart-placeholder">Trend Chart: DP Count Over Time</div>
+                     <p class="ark-body-default text-center mt-2">Current: <strong id="totalDpCountPlatform">2,500,000</strong></p>
+                </div>
+                <div class="card" style="grid-column: 1 / -1;"> <!-- Full width -->
+                    <h3 class="ark-h3">Total Consents Managed (by Status)</h3>
+                    <div class="chart-placeholder">Trend Chart: Active, Withdrawn, Expired Consents</div>
+                     <div class="d-flex justify-around mt-2">
+                        <p>Active: <strong id="activeConsents">1,800,000</strong></p>
+                        <p>Withdrawn: <strong id="withdrawnConsents">500,000</strong></p>
+                        <p>Expired: <strong id="expiredConsents">200,000</strong></p>
+                    </div>
+                </div>
+                 <div class="card">
+                    <h3 class="ark-h3">DP Request Volume (by Type)</h3>
+                    <div class="chart-placeholder">Bar Chart: Access, Correction, Erasure etc.</div>
+                </div>
+                 <div class="card">
+                    <h3 class="ark-h3">Grievance Volume</h3>
+                    <div class="chart-placeholder">Trend Chart: Grievances Over Time</div>
+                </div>
+                 <div class="card" style="grid-column: 1 / -1;">
+                    <h3 class="ark-h3">API Usage Volume (Key Endpoints)</h3>
+                    <div class="chart-placeholder">Line Chart: Requests per second/minute for /validate, /record etc.</div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Super Admin");
+         document.getElementById('analyticsDateFilterForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Analytics data filtered (Mock). Charts would refresh.');
+            // Mock update some numbers
+            document.getElementById('totalDfCount').textContent = Math.floor(Math.random() * 50) + 100;
+            document.getElementById('totalDpCountPlatform').textContent = (Math.floor(Math.random() * 1000000) + 1000000).toLocaleString();
+
+        });
+    </script>
+</body>
+</html>

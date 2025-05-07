@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Principals - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name]</span>
+                <ul>
+                    <li><a href="df_admin_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Consent Management</span>
+                <!-- ... -->
+                <span class="nav-section-title">Data Principal Mgt.</span>
+                 <ul>
+                    <li><a href="df_admin_dp_requests.html"><span class="material-symbols-outlined">rule_settings</span> DP Requests</a></li>
+                    <li><a href="df_admin_grievances.html"><span class="material-symbols-outlined">support_agent</span> Grievances</a></li>
+                    <li><a href="df_admin_data_principals.html" class="active"><span class="material-symbols-outlined">group</span> Data Principals</a></li>
+                </ul>
+                <!-- ... other nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_admin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Data Principals</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">AD</div>
+                        <span class="user-name-display ark-body-default">[DF Admin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="df_admin_profile.html">My Profile</a>
+                        <a href="df_admin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar card mb-4">
+                <form id="filterDataPrincipalsForm" class="d-flex flex-wrap align-center" style="gap: var(--space-md);">
+                    <div class="form-group table-search" style="flex-grow: 1;">
+                        <label for="searchDpListIdentifier" class="ark-label">Search by Identifier (Email/Phone/ID):</label>
+                        <input type="text" id="searchDpListIdentifier" class="form-control" placeholder="Enter identifier...">
+                    </div>
+                     <button type="submit" class="btn btn-primary" style="align-self: flex-end; margin-bottom: var(--space-md);">Search</button>
+                     <button type="button" class="btn btn-secondary" style="align-self: flex-end; margin-bottom: var(--space-md);" data-modal-target="importDpModal"><span class="material-symbols-outlined">upload_file</span> Bulk Import DPs</button>
+                </form>
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Identifier (Email/Phone/ID)</th>
+                            <th>DF Specific ID</th>
+                            <th>Status</th>
+                            <th>Registration Date</th>
+                            <th>Active Consents</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>dp_user_001@ark.com</td>
+                            <td>CUST_XYZ_001</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td>3</td>
+                            <td><a href="df_admin_data_principal_details.html?id=dp_user_001" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span></a></td>
+                        </tr>
+                         <tr>
+                            <td>+919876543210</td>
+                             <td>CUST_ABC_007</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td>1</td>
+                            <td><a href="df_admin_data_principal_details.html?id=phone_9876543210" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span></a></td>
+                        </tr>
+                        <tr>
+                            <td>dp_user_inactive@ark.com</td>
+                            <td>CUST_OLD_002</td>
+                            <td><span class="badge badge-danger">Inactive</span></td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td>0</td>
+                            <td><a href="df_admin_data_principal_details.html?id=dp_user_inactive" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span></a></td>
+                        </tr>
+                        <!-- More placeholder rows -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of X</span>
+                <button class="btn btn-subtle"><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bulk Import DPs Modal -->
+    <div class="modal-overlay" id="importDpModal">
+        <div class="modal-container" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Bulk Import Data Principals</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="importDpForm">
+                <div class="modal-body">
+                    <p class="ark-body-default mb-3">Upload a CSV file with Data Principal information. Ensure the file follows the <a href="#" class="ark-link">specified template format</a>.</p>
+                    <div class="form-group">
+                        <label for="dpCsvFile" class="ark-label">CSV File <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="file" id="dpCsvFile" name="dpCsvFile" class="form-control" accept=".csv" required>
+                    </div>
+                    <p class="helper-text">Columns: df_specific_id, verified_email, verified_phone, full_name, is_child (0/1), is_person_with_disability (0/1)</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Start Import</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Admin Name");
+        document.getElementById('filterDataPrincipalsForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('DP list filtered/searched (Mock). Table would refresh.');
+        });
+         document.getElementById('importDpForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('DP import process started (Mock). You will be notified upon completion.');
+            this.closest('.modal-overlay').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

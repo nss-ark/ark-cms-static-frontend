@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processor Details Review - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <!-- ... other nav sections ... -->
+                <span class="nav-section-title">Reviews & Records</span>
+                 <ul>
+                    <li><a href="df_dpo_exemption_review.html"><span class="material-symbols-outlined">policy</span> Exemption Review</a></li>
+                    <li><a href="df_dpo_processor_review.html" class="active"><span class="material-symbols-outlined">lan</span> Data Processor Records</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Processor Details - <span id="processorNameDisplay">[AWS Cloud Services]</span></h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="df_dpo_processor_review.html" class="ark-link">Data Processor Records</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page" id="breadcrumbProcessorName">[AWS Cloud Services]</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Processor Information</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>Processor Name:</strong> <span id="infoProcessorName">[AWS Cloud Services]</span></p>
+                    <p><strong>Contact Person:</strong> <span id="infoContactPerson">[Account Manager]</span></p>
+                    <p><strong>Contact Email:</strong> <span id="infoContactEmail">aws-support@example.com</span></p>
+                    <p><strong>Contact Phone:</strong> <span id="infoContactPhone">[+1-800-XXX-XXXX] (Placeholder)</span></p>
+                    <p><strong>Contract Reference (Sec 8(2)):</strong> <span id="infoContractRef">[MSA_AWS_2023 - DPA Attached]</span></p>
+                    <p><strong>Webhook URL for Withdrawal Notifications:</strong> <span id="infoWebhookUrl">https://aws.example.com/ark/webhook/withdrawal</span></p>
+                    <p><strong>Status:</strong> <span class="badge badge-success" id="infoProcessorStatus">Active</span></p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Linked Processing Activities</h2>
+                </div>
+                <div class="card-content">
+                     <ul class="ark-body-default" style="list-style: disc; padding-left: var(--space-lg);">
+                        <li>[User Data Storage & Backup]</li>
+                        <li>[Application Hosting & Scalability]</li>
+                        <li>[Log Aggregation & Analysis]</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <form id="dpoProcessorCommentsForm">
+                    <div class="card-header">
+                        <h2 class="ark-h3">DPO Review Comments (Internal)</h2>
+                    </div>
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="dpoProcessorComments" class="ark-label">Your Comments:</label>
+                            <textarea id="dpoProcessorComments" name="dpoProcessorComments" class="form-control" rows="4" placeholder="Add your internal review notes on the processor's compliance, DPA status, etc.">[DPA reviewed on YYYY-MM-DD. Appears compliant with Sec 8(2) requirements. Standard security certifications verified.]</textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                         <button type="submit" class="btn btn-primary">Save Comments</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+        const processorIdFromUrl = new URLSearchParams(window.location.search).get('id') || 'aws';
+        const processorNameDisplay = document.getElementById('processorNameDisplay');
+        const breadcrumbProcessorName = document.getElementById('breadcrumbProcessorName');
+        
+        // Mock data based on ID
+        if (processorIdFromUrl === 'aws') {
+            processorNameDisplay.textContent = '[AWS Cloud Services]';
+            breadcrumbProcessorName.textContent = '[AWS Cloud Services]';
+            // Other fields would be populated similarly in a real app
+        } else if (processorIdFromUrl === 'emailplatform') {
+            processorNameDisplay.textContent = '[Marketing Email Platform Inc.]';
+            breadcrumbProcessorName.textContent = '[Marketing Email Platform Inc.]';
+            document.getElementById('infoProcessorName').textContent = '[Marketing Email Platform Inc.]';
+            document.getElementById('infoContactPerson').textContent = '[Support Team]';
+            document.getElementById('infoContactEmail').textContent = 'support@emailplatform.com';
+            document.getElementById('infoContractRef').textContent = '[SaaS_Agreement_EmailPltfrm - DPA Clause 5.2]';
+            document.getElementById('infoWebhookUrl').textContent = 'https://emailplatform.com/ark/notify';
+            document.getElementById('infoProcessorStatus').textContent = 'Active';
+            document.getElementById('infoProcessorStatus').className = 'badge badge-success';
+        }
+
+
+        document.getElementById('dpoProcessorCommentsForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('DPO comments on processor saved (Mock).');
+        });
+    </script>
+</body>
+</html>

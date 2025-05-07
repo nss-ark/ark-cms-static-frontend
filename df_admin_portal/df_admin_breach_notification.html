@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breach Notification - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name]</span>
+                <ul>
+                    <li><a href="df_admin_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <!-- ... other nav sections ... -->
+                <span class="nav-section-title">Reporting & Audit</span>
+                <ul>
+                    <li><a href="df_admin_reports.html"><span class="material-symbols-outlined">assessment</span> Reports</a></li>
+                    <li><a href="df_admin_audit_logs.html"><span class="material-symbols-outlined">policy</span> Audit Logs</a></li>
+                </ul>
+                 <span class="nav-section-title">Compliance</span>
+                 <ul>
+                    <li><a href="df_admin_breach_notification.html" class="active"><span class="material-symbols-outlined">emergency_home</span> Breach Notification</a></li>
+                </ul>
+                <!-- ... other nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_admin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Personal Data Breach Notification (Sec 8(6))</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">AD</div>
+                        <span class="user-name-display ark-body-default">[DF Admin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="df_admin_profile.html">My Profile</a>
+                        <a href="df_admin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="card">
+                <form id="breachNotificationForm">
+                    <div class="card-header">
+                        <h2 class="ark-h3">Report New Breach</h2>
+                    </div>
+                    <div class="card-content">
+                        <h4 class="ark-h4">Section 1: Breach Details</h4>
+                        <div class="form-group">
+                            <label for="breachRefId" class="ark-label">Breach Reference ID (Internal)</label>
+                            <input type="text" id="breachRefId" name="breachRefId" class="form-control" placeholder="e.g., BRCH_2024_001">
+                        </div>
+                        <div class="form-group">
+                            <label for="breachDiscoveryDate" class="ark-label">Date of Breach Discovery <span style="color: var(--ark-red-500);">*</span></label>
+                            <input type="date" id="breachDiscoveryDate" name="breachDiscoveryDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="breachNature" class="ark-label">Nature of Breach <span style="color: var(--ark-red-500);">*</span></label>
+                            <textarea id="breachNature" name="breachNature" class="form-control" rows="3" placeholder="Describe the nature of the breach (e.g., unauthorized access, accidental disclosure)..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="breachDataCategories" class="ark-label">Categories of Data Affected <span style="color: var(--ark-red-500);">*</span></label>
+                            <textarea id="breachDataCategories" name="breachDataCategories" class="form-control" rows="2" placeholder="e.g., Names, Email Addresses, Financial Information..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="breachAffectedDps" class="ark-label">Approximate Number of Data Principals Affected <span style="color: var(--ark-red-500);">*</span></label>
+                            <input type="number" id="breachAffectedDps" name="breachAffectedDps" class="form-control" min="0" placeholder="e.g., 1500" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="breachConsequences" class="ark-label">Likely Consequences <span style="color: var(--ark-red-500);">*</span></label>
+                            <textarea id="breachConsequences" name="breachConsequences" class="form-control" rows="3" placeholder="Describe the likely consequences for affected Data Principals..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="breachMeasures" class="ark-label">Measures Taken/Proposed to Mitigate <span style="color: var(--ark-red-500);">*</span></label>
+                            <textarea id="breachMeasures" name="breachMeasures" class="form-control" rows="3" placeholder="Describe measures taken or proposed to address the breach and mitigate harm..." required></textarea>
+                        </div>
+                         <div class="form-group">
+                            <label for="breachContact" class="ark-label">Contact Details for More Information <span style="color: var(--ark-red-500);">*</span></label>
+                            <input type="text" id="breachContact" name="breachContact" class="form-control" placeholder="e.g., DPO Email, Support Hotline" required>
+                        </div>
+
+                        <hr class="my-4">
+                        <h4 class="ark-h4">Section 2: Affected Data Principals</h4>
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="affectedDpScope" id="affectedAllDps" value="all" checked>
+                                <label class="form-check-label" for="affectedAllDps">
+                                    All Data Principals (use with extreme caution, if applicable)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="affectedDpScope" id="affectedSpecificDps" value="specific">
+                                <label class="form-check-label" for="affectedSpecificDps">
+                                    Specific Data Principals (List will be required or identified via system query)
+                                </label>
+                            </div>
+                        </div>
+                        <div id="specificDpsInputArea" style="display:none;" class="form-group">
+                             <label for="specificDpsList" class="ark-label">List/Query for Specific DPs:</label>
+                             <textarea id="specificDpsList" name="specificDpsList" class="form-control" rows="3" placeholder="Enter comma-separated list of DP identifiers, or describe query criteria..."></textarea>
+                             <p class="helper-text">This section might involve a more complex UI for searching/selecting DPs in a real application.</p>
+                        </div>
+                        
+                        <hr class="my-4">
+                        <h4 class="ark-h4">Section 3: Notification Preview</h4>
+                        <div class="card" style="background-color: var(--ark-gray-50); padding: var(--space-md);">
+                            <p><strong>Subject:</strong> Important: Personal Data Breach Notification from [Data Fiduciary Name]</p>
+                            <p>Dear Data Principal,</p>
+                            <p>We are writing to inform you about a personal data breach that occurred at [Data Fiduciary Name] on/around [Date of Breach Discovery, to be filled from form].</p>
+                            <p><strong>Nature of Breach:</strong> <span class="preview-field" data-source="breachNature">[Nature of Breach]</span></p>
+                            <p><strong>Data Affected:</strong> <span class="preview-field" data-source="breachDataCategories">[Categories of Data Affected]</span></p>
+                            <p><strong>Likely Consequences:</strong> <span class="preview-field" data-source="breachConsequences">[Likely Consequences]</span></p>
+                            <p><strong>Measures Taken:</strong> <span class="preview-field" data-source="breachMeasures">[Measures Taken/Proposed]</span></p>
+                            <p>For more information or assistance, please contact us at: <span class="preview-field" data-source="breachContact">[Contact Details]</span></p>
+                            <p>We sincerely regret any inconvenience or concern this may cause.</p>
+                            <p>Sincerely,<br>[Data Fiduciary Name]</p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right d-flex justify-end align-center" style="gap: var(--space-md);">
+                         <button type="button" class="btn btn-secondary" id="sendToBoardBtn" onclick="alert('Notification details prepared for Board submission (Mock).')"><span class="material-symbols-outlined">shield</span> Send to Board (System Placeholder)</button>
+                         <button type="submit" class="btn btn-primary"><span class="material-symbols-outlined">outgoing_mail</span> Notify Affected Data Principals</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Admin Name");
+
+        const breachForm = document.getElementById('breachNotificationForm');
+        const specificDpsInputArea = document.getElementById('specificDpsInputArea');
+        const affectedDpScopeRadios = document.querySelectorAll('input[name="affectedDpScope"]');
+
+        affectedDpScopeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                specificDpsInputArea.style.display = this.value === 'specific' ? 'block' : 'none';
+            });
+        });
+
+        // Live preview update (basic)
+        const previewFields = document.querySelectorAll('.preview-field');
+        breachForm.addEventListener('input', (e) => {
+            if (e.target.id && e.target.id.startsWith('breach')) {
+                previewFields.forEach(pf => {
+                    if (pf.dataset.source === e.target.id) {
+                        pf.textContent = e.target.value || `[${e.target.placeholder || e.target.id.replace('breach', '')}]`;
+                    }
+                });
+            }
+        });
+
+
+        breachForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to send notifications to affected Data Principals? This action will be logged.')) {
+                alert('Breach notifications sent to affected Data Principals (Mock).');
+                // Potentially redirect or clear form
+            }
+        });
+    </script>
+</body>
+</html>

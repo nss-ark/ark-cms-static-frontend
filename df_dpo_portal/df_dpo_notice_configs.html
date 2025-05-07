@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Configurations Review - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Compliance Monitoring</span>
+                <ul>
+                    <li><a href="df_dpo_consent_records.html"><span class="material-symbols-outlined">folder_managed</span> Consent Records</a></li>
+                    <li><a href="df_dpo_notice_configs.html" class="active"><span class="material-symbols-outlined">preview</span> Notice Configurations</a></li>
+                    <li><a href="df_dpo_purpose_category_review.html"><span class="material-symbols-outlined">checklist_rtl</span> Purpose & Data Cat.</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Notice Configurations Review</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar d-flex justify-between align-center">
+                <form id="filterNoticesForm" class="filters d-flex" style="gap: var(--space-md);">
+                     <div class="form-group">
+                        <label for="filterNoticeStatus" class="ark-label">Status:</label>
+                        <select id="filterNoticeStatus" class="form-control">
+                            <option value="">All</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-secondary" style="align-self: flex-end; margin-bottom: var(--space-md);">Filter</button>
+                </form>
+                 <!-- DPO typically doesn't create notices -->
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Notice ID/Version</th>
+                            <th>Created Date</th>
+                            <th>Status</th>
+                            <th>Languages Available</th>
+                            <th>Linked Purposes</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NOTICE_V2.2</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>EN, HI</td>
+                            <td>4</td>
+                            <td class="table-actions">
+                                <a href="df_dpo_notice_details_review.html?id=NOTICE_V2.2" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span> Review</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>NOTICE_V2.1</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-neutral">Inactive</span></td>
+                            <td>EN, HI, TA</td>
+                            <td>3</td>
+                            <td class="table-actions">
+                                <a href="df_dpo_notice_details_review.html?id=NOTICE_V2.1" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span> Review</a>
+                            </td>
+                        </tr>
+                        <!-- More placeholder rows -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of 1</span>
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+        document.getElementById('filterNoticesForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('Notice list filtered (Mock). Table would refresh.');
+        });
+    </script>
+</body>
+</html>

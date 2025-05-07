@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DF Admin Dashboard - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name]</span>
+                <ul>
+                    <li><a href="df_admin_dashboard.html" class="active"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Consent Management</span>
+                <ul>
+                    <li><a href="df_admin_notices.html"><span class="material-symbols-outlined">feed</span> Notices</a></li>
+                    <li><a href="df_admin_purposes.html"><span class="material-symbols-outlined">target</span> Purposes</a></li>
+                    <li><a href="df_admin_categories.html"><span class="material-symbols-outlined">category</span> Data Categories</a></li>
+                    <li><a href="df_admin_consent_records.html"><span class="material-symbols-outlined">folder_shared</span> Consent Records</a></li>
+                </ul>
+                <span class="nav-section-title">Data Principal Mgt.</span>
+                 <ul>
+                    <li><a href="df_admin_dp_requests.html"><span class="material-symbols-outlined">rule_settings</span> DP Requests</a></li>
+                    <li><a href="df_admin_grievances.html"><span class="material-symbols-outlined">support_agent</span> Grievances</a></li>
+                    <li><a href="df_admin_data_principals.html"><span class="material-symbols-outlined">group</span> Data Principals</a></li>
+                </ul>
+                <span class="nav-section-title">Organization Settings</span>
+                <ul>
+                    <li><a href="df_admin_profile.html"><span class="material-symbols-outlined">business</span> DF Profile</a></li>
+                    <li><a href="df_admin_user_management.html"><span class="material-symbols-outlined">manage_accounts</span> User Management</a></li>
+                    <li><a href="df_admin_processors.html"><span class="material-symbols-outlined">hub</span> Data Processors</a></li>
+                    <li><a href="df_admin_activities.html"><span class="material-symbols-outlined">schema</span> Processing Activities</a></li>
+                    <li><a href="df_admin_exemptions.html"><span class="material-symbols-outlined">gavel</span> Exemptions</a></li>
+                </ul>
+                 <span class="nav-section-title">Integrations</span>
+                <ul>
+                    <li><a href="df_admin_api_keys.html"><span class="material-symbols-outlined">key</span> API Keys</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">webhook</span> Webhooks (Future)</a></li>
+                    <li><a href="df_admin_cookie_banner_config.html"><span class="material-symbols-outlined">cookie</span> Cookie Banner</a></li>
+                </ul>
+                <span class="nav-section-title">Reporting & Audit</span>
+                <ul>
+                    <li><a href="df_admin_reports.html"><span class="material-symbols-outlined">assessment</span> Reports</a></li>
+                    <li><a href="df_admin_audit_logs.html"><span class="material-symbols-outlined">policy</span> Audit Logs</a></li>
+                </ul>
+                 <span class="nav-section-title">Help</span>
+                <ul>
+                    <li><a href="#"><span class="material-symbols-outlined">help_outline</span> Help/Support</a></li>
+                </ul>
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_admin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Admin Dashboard</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">AD</div>
+                        <span class="user-name-display ark-body-default">[DF Admin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="df_admin_profile.html">My Profile</a>
+                        <a href="df_admin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <section id="key-metrics">
+                <h2 class="ark-h2">Key Metrics Overview</h2>
+                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-lg);">
+                    <div class="card">
+                        <h3 class="ark-h4">Active Consents</h3>
+                        <p class="ark-display">[Count]</p>
+                        <a href="df_admin_consent_records.html" class="btn btn-link">View Records</a>
+                    </div>
+                    <div class="card">
+                        <h3 class="ark-h4">Pending DP Requests</h3>
+                        <p class="ark-display">[Count]</p>
+                        <a href="df_admin_dp_requests.html" class="btn btn-link">Manage Requests</a>
+                    </div>
+                     <div class="card">
+                        <h3 class="ark-h4">Pending Grievances</h3>
+                        <p class="ark-display">[Count]</p>
+                        <a href="df_admin_grievances.html" class="btn btn-link">Manage Grievances</a>
+                    </div>
+                    <div class="card">
+                        <h3 class="ark-h4">Active DF Users</h3>
+                        <p class="ark-display">[Count]</p>
+                        <a href="df_admin_user_management.html" class="btn btn-link">Manage Users</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="dp-request-sla" class="mt-4">
+                <h2 class="ark-h2">DP Request SLA Compliance</h2>
+                <div class="card">
+                    <!-- Placeholder for chart/summary -->
+                    <p class="ark-body-default">[Chart showing percentage of requests within SLA, count approaching/overdue.]</p>
+                    <a href="df_admin_dp_requests.html?filter=sla_status" class="btn btn-link mt-2">View Details</a>
+                </div>
+            </section>
+
+            <section id="recent-activity" class="mt-4">
+                <h2 class="ark-h2">Recent Activity</h2>
+                <div class="card">
+                     <ul class="ark-body-default" style="list-style: none; padding: 0;">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">User <strong>[DF DPO Name]</strong> logged in - <span class="ark-body-small">[Date Time]</span></li>
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">Notice Version <strong>[V2.1]</strong> activated - <span class="ark-body-small">[Date Time]</span></li>
+                        <li style="padding: var(--space-sm) 0;">API Key <strong>[Production Server]</strong> created - <span class="ark-body-small">[Date Time]</span></li>
+                    </ul>
+                    <a href="df_admin_audit_logs.html" class="btn btn-link mt-2">View Full Audit Log</a>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Admin User");
+    </script>
+</body>
+</html>

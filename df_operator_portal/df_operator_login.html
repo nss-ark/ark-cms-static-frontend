@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DF Operator Login - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="centered-form-container">
+        <div class="form-wrapper">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <h1 class="ark-h1">Data Fiduciary Operator Login</h1>
+            <form id="df_operator-login-form">
+                 <div class="credential-step"> <!-- Operator login does not require OTP by default in wireframes -->
+                    <div class="form-group">
+                        <label for="df-operator-email" class="ark-label">Work Email Address</label>
+                        <input type="email" id="df-operator-email" name="email_phone" class="form-control" placeholder="Enter your registered work email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="df-operator-password" class="ark-label">Password</label>
+                        <input type="password" id="df-operator-password" name="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="ark-link btn-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">Login</button>
+                </div>
+            </form>
+             <p class="ark-body-small text-center mt-2">
+                <a href="#" class="ark-link">Platform Usage Policy</a>
+            </p>
+        </div>
+    </div>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

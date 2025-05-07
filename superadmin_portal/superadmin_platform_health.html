@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Health - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .health-widget {
+            padding: var(--space-lg);
+            border: 1px solid var(--ark-gray-300);
+            border-radius: var(--border-radius-lg);
+            background-color: #fff;
+            text-align: center;
+        }
+        .health-widget .ark-h4 { margin-bottom: var(--space-sm); }
+        .health-widget .metric { font-size: 28px; font-weight: 700; margin-bottom: var(--space-xs); }
+        .health-widget .status-indicator { font-weight: 600; }
+        .health-widget .status-indicator.healthy { color: var(--ark-green-500); }
+        .health-widget .status-indicator.warning { color: var(--ark-yellow-500); }
+        .health-widget .status-indicator.error { color: var(--ark-red-500); }
+        .chart-placeholder {
+            height: 150px;
+            background-color: var(--ark-gray-100);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--ark-gray-500);
+            border-radius: var(--border-radius-md);
+            margin-top: var(--space-sm);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                 <span class="nav-section-title">Ark CMS SuperAdmin</span>
+                <ul>
+                    <li><a href="superadmin_dashboard.html"><span class="material-symbols-outlined">space_dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Tenant Management</span>
+                <ul>
+                    <li><a href="superadmin_data_fiduciaries.html"><span class="material-symbols-outlined">domain</span> Data Fiduciaries</a></li>
+                </ul>
+                <span class="nav-section-title">Platform Management</span>
+                <ul>
+                    <li><a href="superadmin_users.html"><span class="material-symbols-outlined">shield_person</span> SuperAdmin Users</a></li>
+                    <li><a href="superadmin_global_settings.html"><span class="material-symbols-outlined">tune</span> Global Settings</a></li>
+                    <li><a href="superadmin_notification_templates.html"><span class="material-symbols-outlined">text_format</span> Notification Templates</a></li>
+                </ul>
+                <span class="nav-section-title">Monitoring</span>
+                <ul>
+                    <li><a href="superadmin_platform_health.html" class="active"><span class="material-symbols-outlined">monitor_heart</span> Platform Health</a></li>
+                    <li><a href="superadmin_platform_analytics.html"><span class="material-symbols-outlined">signal_cellular_alt</span> Platform Analytics</a></li>
+                    <li><a href="superadmin_system_logs.html"><span class="material-symbols-outlined">plagiarism</span> System Logs</a></li>
+                    <li><a href="superadmin_platform_audit_logs.html"><span class="material-symbols-outlined">admin_panel_settings</span> Platform Audit Logs</a></li>
+                </ul>
+                <!-- ... other SA nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="superadmin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Platform Health Monitoring</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">SA</div>
+                        <span class="user-name-display ark-body-default">[SuperAdmin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="superadmin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg);">
+                <div class="health-widget">
+                    <h4 class="ark-h4">Server CPU Usage</h4>
+                    <div class="metric" id="cpuUsage">15%</div>
+                    <div class="status-indicator healthy">Normal</div>
+                    <div class="chart-placeholder">Real-time Chart Placeholder</div>
+                </div>
+                <div class="health-widget">
+                    <h4 class="ark-h4">Memory Usage</h4>
+                    <div class="metric" id="memoryUsage">35%</div>
+                    <div class="status-indicator healthy">Normal</div>
+                    <div class="chart-placeholder">Real-time Chart Placeholder</div>
+                </div>
+                 <div class="health-widget">
+                    <h4 class="ark-h4">Database Connections</h4>
+                    <div class="metric" id="dbConnections">75</div>
+                    <div class="status-indicator healthy">Stable</div>
+                     <p class="ark-body-small mt-2">Max Allowed: 200</p>
+                </div>
+                 <div class="health-widget">
+                    <h4 class="ark-h4">API Avg. Response Time</h4>
+                    <div class="metric" id="apiResponseTime">85ms</div>
+                    <div class="status-indicator healthy">Fast</div>
+                    <div class="chart-placeholder">Trend Chart Placeholder</div>
+                </div>
+                 <div class="health-widget">
+                    <h4 class="ark-h4">API Error Rate (Last Hour)</h4>
+                    <div class="metric" id="apiErrorRate">0.1%</div>
+                    <div class="status-indicator healthy">Low</div>
+                    <div class="chart-placeholder">Trend Chart Placeholder</div>
+                </div>
+                <div class="health-widget">
+                    <h4 class="ark-h4">Background Job Queue</h4>
+                    <div class="metric" id="jobQueueLength">5</div>
+                    <div class="status-indicator healthy">Normal</div>
+                     <p class="ark-body-small mt-2">Pending tasks</p>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <h2 class="ark-h2">Component Status</h2>
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md);">
+                <div class="card text-center">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--ark-green-500);">dns</span>
+                    <h4 class="ark-h4 mt-2">Web Servers</h4>
+                    <p class="status-indicator healthy">Operational</p>
+                </div>
+                 <div class="card text-center">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--ark-green-500);">api</span>
+                    <h4 class="ark-h4 mt-2">API Servers</h4>
+                    <p class="status-indicator healthy">Operational</p>
+                </div>
+                <div class="card text-center">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--ark-green-500);">database</span>
+                    <h4 class="ark-h4 mt-2">Database (MS SQL)</h4>
+                    <p class="status-indicator healthy">Operational</p>
+                </div>
+                 <div class="card text-center">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--ark-green-500);">deployed_code</span>
+                    <h4 class="ark-h4 mt-2">Job Queue (Workers)</h4>
+                    <p class="status-indicator healthy">Operational</p>
+                </div>
+                 <div class="card text-center">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--ark-yellow-500);">outgoing_mail</span>
+                    <h4 class="ark-h4 mt-2">Email Gateway</h4>
+                    <p class="status-indicator warning">Degraded Performance</p>
+                </div>
+                 <div class="card text-center">
+                    <span class="material-symbols-outlined" style="font-size: 40px; color: var(--ark-green-500);">sms</span>
+                    <h4 class="ark-h4 mt-2">SMS Gateway</h4>
+                    <p class="status-indicator healthy">Operational</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Super Admin");
+        // Mock dynamic data updates for health metrics (very simplified)
+        setInterval(() => {
+            document.getElementById('cpuUsage').textContent = `${Math.floor(Math.random() * 20) + 10}%`;
+            document.getElementById('memoryUsage').textContent = `${Math.floor(Math.random() * 20) + 30}%`;
+            document.getElementById('dbConnections').textContent = Math.floor(Math.random() * 30) + 60;
+            document.getElementById('apiResponseTime').textContent = `${Math.floor(Math.random() * 50) + 70}ms`;
+            document.getElementById('apiErrorRate').textContent = `${(Math.random() * 0.5).toFixed(1)}%`;
+            document.getElementById('jobQueueLength').textContent = Math.floor(Math.random() * 10);
+        }, 5000); // Update every 5 seconds
+    </script>
+</body>
+</html>

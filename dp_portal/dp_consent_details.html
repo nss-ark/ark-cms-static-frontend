@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Details - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dp_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li><a href="dp_consents.html" class="active"><span class="material-symbols-outlined">fact_check</span> My Consents</a></li>
+                    <li><a href="dp_requests.html"><span class="material-symbols-outlined">rule</span> My Rights Requests</a></li>
+                    <li><a href="dp_grievances.html"><span class="material-symbols-outlined">report_problem</span> My Grievances</a></li>
+                    <li><a href="dp_profile.html"><span class="material-symbols-outlined">account_circle</span> My Profile</a></li>
+                    <li><a href="dp_settings.html"><span class="material-symbols-outlined">settings</span> Settings</a></li>
+                    <li><a href="dp_notifications.html"><span class="material-symbols-outlined">notifications</span> Notifications</a></li>
+                </ul>
+                <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="dp_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Consent Details</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">DP</div>
+                        <span class="user-name-display ark-body-default">[DP Full Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="dp_profile.html">My Profile</a>
+                        <a href="dp_settings.html">Settings</a>
+                        <div class="divider"></div>
+                        <a href="dp_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="dp_consents.html" class="ark-link">My Consents</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page">[Example Corp] - [Marketing Emails Subscription]</li>
+                </ol>
+            </nav>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="ark-h2">Consent Summary</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default"><strong>Data Fiduciary:</strong> [Example Corp]</p>
+                    <p class="ark-body-default"><strong>Purpose:</strong> [Marketing Emails Subscription]</p>
+                    <p class="ark-body-default"><strong>Current Status:</strong> <span class="badge badge-success">Active</span></p>
+                    <p class="ark-body-default"><strong>Consent Given On:</strong> [YYYY-MM-DD HH:MM]</p>
+                    <p class="ark-body-default"><strong>Last Updated On:</strong> [YYYY-MM-DD HH:MM]</p>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Data Categories Involved</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="ark-body-default" style="list-style: disc; padding-left: var(--space-lg);">
+                        <li>Email Address (Mandatory: Yes) - <span class="badge badge-success">Active</span></li>
+                        <li>Full Name (Mandatory: Yes) - <span class="badge badge-success">Active</span></li>
+                        <li>Purchase History (Mandatory: No) - <button class="btn btn-link btn-sm" data-modal-target="modifyCategoryModal">Modify</button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Actions</h2>
+                </div>
+                <div class="card-content d-flex" style="gap: var(--space-md);">
+                    <button class="btn btn-danger" data-modal-target="withdrawConfirmModal">
+                        <span class="material-symbols-outlined">delete</span> Withdraw Consent for this Purpose
+                    </button>
+                    <button class="btn btn-secondary" data-modal-target="modifyConsentModal">
+                        <span class="material-symbols-outlined">tune</span> Modify Consent Preferences
+                    </button>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Interaction History</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="ark-body-default" style="list-style: none; padding: 0;">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>Consent Granted</strong> - [YYYY-MM-DD HH:MM] <br>
+                            <span class="ark-body-small">Notice Version: [v1.2], Collection Method: [Web Form]</span>
+                        </li>
+                        <li style="padding: var(--space-sm) 0;">
+                            <strong>Consent Modified (Category: Purchase History to Denied)</strong> - [YYYY-MM-DD HH:MM] <br>
+                            <span class="ark-body-small">Interaction via DP Dashboard</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Withdraw Confirmation Modal -->
+    <div class="modal-overlay" id="withdrawConfirmModal" data-modal-dismiss>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Confirm Withdrawal</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default">Are you sure you want to withdraw consent for '<strong>[Marketing Emails Subscription]</strong>' from '<strong>[Example Corp]</strong>'? This may affect the services provided. (Ref Sec 6(5))</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button class="btn btn-danger" onclick="alert('Consent Withdrawn (Mock)')">Confirm Withdrawal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modify Category Modal (Placeholder) -->
+    <div class="modal-overlay" id="modifyCategoryModal">
+        <div class="modal-container" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Modify Consent for Data Category</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default"><strong>Data Fiduciary:</strong> [Example Corp]</p>
+                <p class="ark-body-default"><strong>Purpose:</strong> [Marketing Emails Subscription]</p>
+                <p class="ark-body-default"><strong>Data Category:</strong> Purchase History</p>
+                <hr class="my-3">
+                <div class="form-group">
+                    <label class="ark-label">Your consent for 'Purchase History' for this purpose:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categoryConsent" id="catConsentActive" value="active" checked>
+                        <label class="form-check-label" for="catConsentActive">
+                            Active (Allow processing)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categoryConsent" id="catConsentDenied" value="denied">
+                        <label class="form-check-label" for="catConsentDenied">
+                            Denied (Do not allow processing)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button class="btn btn-primary" onclick="alert('Category consent updated (Mock)')">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modify Consent Modal (Placeholder) -->
+    <div class="modal-overlay" id="modifyConsentModal">
+         <div class="modal-container" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Modify Consent Preferences</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default"><strong>Data Fiduciary:</strong> [Example Corp]</p>
+                <p class="ark-body-default"><strong>Purpose:</strong> [Marketing Emails Subscription]</p>
+                <hr class="my-3">
+                <h4 class="ark-h4 mb-3">Data Categories:</h4>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="modCatEmail" checked>
+                        <label class="form-check-label" for="modCatEmail">
+                            Email Address (Mandatory for this purpose)
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="modCatName" checked>
+                        <label class="form-check-label" for="modCatName">
+                            Full Name (Mandatory for this purpose)
+                        </label>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="modCatPurchase">
+                        <label class="form-check-label" for="modCatPurchase">
+                            Purchase History (Optional)
+                        </label>
+                    </div>
+                </div>
+                <p class="ark-body-small mt-3">Review and adjust your consent for optional data categories associated with this purpose.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button class="btn btn-primary" onclick="alert('Consent preferences updated (Mock)')">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Data Principal User");
+    </script>
+</body>
+</html>

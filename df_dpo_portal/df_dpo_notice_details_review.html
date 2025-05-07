@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Review - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .compliance-checklist li { margin-bottom: var(--space-xs); }
+        .compliance-checklist .material-symbols-outlined { vertical-align: middle; margin-right: var(--space-xs); }
+        .compliance-checklist .pass { color: var(--ark-green-500); }
+        .compliance-checklist .fail { color: var(--ark-red-500); }
+        .compliance-checklist .warn { color: var(--ark-yellow-500); }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Compliance Monitoring</span>
+                <ul>
+                    <li><a href="df_dpo_consent_records.html"><span class="material-symbols-outlined">folder_managed</span> Consent Records</a></li>
+                    <li><a href="df_dpo_notice_configs.html" class="active"><span class="material-symbols-outlined">preview</span> Notice Configurations</a></li>
+                    <li><a href="df_dpo_purpose_category_review.html"><span class="material-symbols-outlined">checklist_rtl</span> Purpose & Data Cat.</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Notice Review - <span id="noticeVersionDisplayReview">NOTICE_V2.2</span></h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="df_dpo_notice_configs.html" class="ark-link">Notice Configurations</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page" id="breadcrumbNoticeVersionReview">NOTICE_V2.2</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Notice Information</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>Notice ID/Version:</strong> <span id="infoNoticeVersionReview">NOTICE_V2.2</span></p>
+                    <p><strong>Created Date:</strong> [YYYY-MM-DD]</p>
+                    <p><strong>Status:</strong> <span class="badge badge-success" id="infoNoticeStatusReview">Active</span></p>
+                    <p><strong>Created By:</strong> [DF Admin Name]</p>
+                </div>
+            </div>
+
+            <div class="card mb-4 tabs">
+                <div class="card-header">
+                    <h2 class="ark-h3">Notice Translations & Compliance</h2>
+                     <div class="tab-list">
+                        <div class="tab-item active" data-tab="review-lang-en">English (EN)</div>
+                        <div class="tab-item" data-tab="review-lang-hi">Hindi (HI)</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="tab-panel active" id="review-lang-en">
+                        <h4 class="ark-h4">English Content</h4>
+                        <div class="ark-body-default" style="border: 1px solid var(--ark-gray-200); padding: var(--space-md); border-radius: var(--border-radius-sm); background-color: var(--ark-gray-25);  max-height: 300px; overflow-y: auto;">
+                            <p>This is the English version of the consent notice for [Data Fiduciary Name]. We collect your personal data for the following purposes: 
+                                <ul>
+                                    <li>Account Creation & Management: To set up and maintain your user account.</li>
+                                    <li>Service Provisioning: To deliver the services you have requested.</li>
+                                    <li>Marketing Communications: To send you updates about new products and offers (optional).</li>
+                                </ul>
+                            </p>
+                            <p>The personal data collected may include: Your name, email address, phone number, usage data, and payment information (if applicable).</p>
+                            <p>You have the right to withdraw your consent at any time, access your data, request correction or erasure of your data, and to lodge a grievance. You may exercise these rights through your user dashboard or by contacting our Data Protection Officer at [DPO Email]. You also have the right to make a complaint to the Data Protection Board of India if your grievances are not addressed.</p>
+                            <p>Your data will be retained as long as necessary for the specified purposes or as required by law. For more details, please refer to our full Privacy Policy.</p>
+                        </div>
+                        <h4 class="ark-h4 mt-3">Compliance Checklist (Sec 5 Requirements)</h4>
+                        <ul class="compliance-checklist ark-body-default" style="list-style: none; padding:0;">
+                            <li><span class="material-symbols-outlined pass">check_circle</span> Personal data listed?</li>
+                            <li><span class="material-symbols-outlined pass">check_circle</span> Purpose(s) for processing clearly stated?</li>
+                            <li><span class="material-symbols-outlined pass">check_circle</span> Manner to exercise rights (Sec 6(4) - Withdrawal) explained?</li>
+                            <li><span class="material-symbols-outlined pass">check_circle</span> Manner to exercise rights (Sec 13 - Grievance) explained?</li>
+                            <li><span class="material-symbols-outlined pass">check_circle</span> Manner to complain to Board explained?</li>
+                            <li><span class="material-symbols-outlined warn">help_outline</span> DPO/Contact details for rights exercise provided (Sec 6(3) - in notice itself or linked clearly)?</li>
+                        </ul>
+                    </div>
+                    <div class="tab-panel" id="review-lang-hi">
+                        <h4 class="ark-h4">Hindi Content</h4>
+                         <div class="ark-body-default" style="border: 1px solid var(--ark-gray-200); padding: var(--space-md); border-radius: var(--border-radius-sm); background-color: var(--ark-gray-25); max-height: 300px; overflow-y: auto;">
+                            <p>[डेटा फिड्यूशरी का नाम] के लिए सहमति सूचना का यह हिंदी संस्करण है। हम निम्नलिखित उद्देश्यों के लिए आपका व्यक्तिगत डेटा एकत्र करते हैं: [यहां उद्देश्य सूचीबद्ध करें]। आपको अपनी सहमति वापस लेने, अपने डेटा तक पहुंचने और सुधार या मिटाने का अनुरोध करने का अधिकार है। आप डेटा संरक्षण बोर्ड से शिकायत कर सकते हैं। अधिक जानकारी के लिए, हमारे डीपीओ से [डीपीओ ईमेल] पर संपर्क करें।</p>
+                        </div>
+                         <h4 class="ark-h4 mt-3">Compliance Checklist (Sec 5 Requirements)</h4>
+                         <ul class="compliance-checklist ark-body-default" style="list-style: none; padding:0;">
+                            <li><span class="material-symbols-outlined pass">check_circle</span> व्यक्तिगत डेटा सूचीबद्ध है?</li>
+                            <li><span class="material-symbols-outlined pass">check_circle</span> प्रसंस्करण के उद्देश्य स्पष्ट रूप से बताए गए हैं?</li>
+                            <!-- ... other checklist items in Hindi ... -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="ark-h3">Linked Purposes</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="ark-body-default" style="list-style: disc; padding-left: var(--space-lg);">
+                        <li>[Account Creation & Management] (ACC_MGMT)</li>
+                        <li>[Service Provisioning] (SVC_PROV)</li>
+                        <li>[Marketing Communications] (MKTG_COMM)</li>
+                        <li>[Product Improvement Analytics] (ANALYTICS_PI)</li>
+                    </ul>
+                </div>
+                 <div class="card-footer text-right">
+                    <button class="btn btn-secondary" onclick="alert('DPO comments added (Mock)')"><span class="material-symbols-outlined">rate_review</span> Add Review Comments (Internal)</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+        const noticeIdReviewFromUrl = new URLSearchParams(window.location.search).get('id') || 'NOTICE_V2.2';
+        document.getElementById('noticeVersionDisplayReview').textContent = noticeIdReviewFromUrl;
+        document.getElementById('breadcrumbNoticeVersionReview').textContent = noticeIdReviewFromUrl;
+        document.getElementById('infoNoticeVersionReview').textContent = noticeIdReviewFromUrl;
+        // Mock active status based on ID or query param for demo
+        if (noticeIdReviewFromUrl !== 'NOTICE_V2.2') {
+             document.getElementById('infoNoticeStatusReview').textContent = 'Inactive';
+             document.getElementById('infoNoticeStatusReview').className = 'badge badge-neutral';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Notification Template - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .rich-text-editor-placeholder { /* Reusing from df_admin_notice_details */
+            height: 200px;
+            border: 1px solid var(--ark-gray-300);
+            padding: var(--space-sm);
+            border-radius: var(--border-radius-md);
+            background-color: var(--ark-gray-50);
+            color: var(--ark-gray-700);
+            overflow-y: auto;
+        }
+        .placeholders-list {
+            background-color: var(--ark-gray-100);
+            padding: var(--space-md);
+            border-radius: var(--border-radius-md);
+            font-size: 12px;
+        }
+        .placeholders-list ul { list-style: none; padding: 0; }
+        .placeholders-list li { margin-bottom: var(--space-xxs); }
+        .placeholders-list code { background-color: var(--ark-gray-200); padding: 2px 4px; border-radius: var(--border-radius-sm); }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                 <span class="nav-section-title">Ark CMS SuperAdmin</span>
+                <ul>
+                    <li><a href="superadmin_dashboard.html"><span class="material-symbols-outlined">space_dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Tenant Management</span>
+                <ul>
+                    <li><a href="superadmin_data_fiduciaries.html"><span class="material-symbols-outlined">domain</span> Data Fiduciaries</a></li>
+                </ul>
+                <span class="nav-section-title">Platform Management</span>
+                <ul>
+                    <li><a href="superadmin_users.html"><span class="material-symbols-outlined">shield_person</span> SuperAdmin Users</a></li>
+                    <li><a href="superadmin_global_settings.html"><span class="material-symbols-outlined">tune</span> Global Settings</a></li>
+                    <li><a href="superadmin_notification_templates.html" class="active"><span class="material-symbols-outlined">text_format</span> Notification Templates</a></li>
+                </ul>
+                <!-- ... other SA nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="superadmin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Edit Template - <span id="templateNameDisplay">[Password Reset]</span></h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">SA</div>
+                        <span class="user-name-display ark-body-default">[SuperAdmin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="superadmin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+             <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="superadmin_notification_templates.html" class="ark-link">Notification Templates</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page" id="breadcrumbTemplateName">[Password Reset]</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Template Information</h2>
+                </div>
+                 <div class="card-content">
+                    <p><strong>Template Name:</strong> <span id="infoTemplateName">[Password Reset]</span> (Read-only)</p>
+                    <p><strong>Channel:</strong> <span id="infoTemplateChannel">Email</span> (Read-only)</p>
+                    <div class="placeholders-list mt-3">
+                        <h4 class="ark-h4">Available Placeholders:</h4>
+                        <ul id="availablePlaceholdersList">
+                            <li><code>{{dp_name}}</code> - Data Principal's Name</li>
+                            <li><code>{{df_name}}</code> - Data Fiduciary's Name</li>
+                            <li><code>{{reset_link}}</code> - Password Reset Link</li>
+                            <li><code>{{otp_code}}</code> - One-Time Password</li>
+                            <li><code>{{request_id}}</code> - Request ID</li>
+                            <li><code>{{grievance_id}}</code> - Grievance ID</li>
+                            <li><code>{{purpose_name}}</code> - Purpose Name</li>
+                            <!-- Add more relevant placeholders based on template type -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card tabs">
+                <div class="card-header">
+                    <h2 class="ark-h3">Template Content by Language</h2>
+                    <div class="tab-list">
+                        <div class="tab-item active" data-tab="template-lang-en">English (EN)</div>
+                        <div class="tab-item" data-tab="template-lang-hi">Hindi (HI)</div>
+                        <!-- Button to add language dynamically if needed by SA -->
+                         <button class="btn btn-sm btn-subtle" style="margin-left: auto;" data-modal-target="addTemplateLangModal"><span class="material-symbols-outlined">add</span> Add Language</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="tab-panel active" id="template-lang-en">
+                        <form class="templateContentForm" data-lang="en">
+                            <h4 class="ark-h4">English Content</h4>
+                            <div class="form-group" id="subjectGroupEn" style="display: block;"> <!-- Show only for email -->
+                                <label for="templateSubjectEn" class="ark-label">Subject (EN)</label>
+                                <input type="text" id="templateSubjectEn" name="subject" class="form-control" value="Reset Your Ark CMS Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="templateBodyEn" class="ark-label">Body Content (EN)</label>
+                                <textarea id="templateBodyEn" name="body" class="form-control rich-text-editor-placeholder" rows="8">Hello {{dp_name}},\n\nPlease click the link below to reset your password for Ark CMS:\n{{reset_link}}\n\nIf you did not request this, please ignore this email.\n\nThanks,\nThe Ark CMS Team</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Save English Content</button>
+                        </form>
+                    </div>
+                    <div class="tab-panel" id="template-lang-hi">
+                         <form class="templateContentForm" data-lang="hi">
+                            <h4 class="ark-h4">Hindi Content</h4>
+                            <div class="form-group" id="subjectGroupHi" style="display: block;"> <!-- Show only for email -->
+                                <label for="templateSubjectHi" class="ark-label">विषय (HI)</label>
+                                <input type="text" id="templateSubjectHi" name="subject" class="form-control" value="अपना आर्क सीएमएस पासवर्ड रीसेट करें">
+                            </div>
+                            <div class="form-group">
+                                <label for="templateBodyHi" class="ark-label">मुख्य सामग्री (HI)</label>
+                                <textarea id="templateBodyHi" name="body" class="form-control rich-text-editor-placeholder" rows="8">नमस्ते {{dp_name}},\n\nआर्क सीएमएस के लिए अपना पासवर्ड रीसेट करने के लिए कृपया नीचे दिए गए लिंक पर क्लिक करें:\n{{reset_link}}\n\nयदि आपने इसका अनुरोध नहीं किया है, तो कृपया इस ईमेल को अनदेखा करें।\n\nधन्यवाद,\nआर्क सीएमएस टीम</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Save Hindi Content</button>
+                        </form>
+                    </div>
+                    <!-- More language tab-panels -->
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Add Language to Template Modal -->
+    <div class="modal-overlay" id="addTemplateLangModal">
+        <div class="modal-container" style="max-width: 400px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Add Language Translation</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="selectTemplateLanguage" class="ark-label">Select Language:</label>
+                    <select id="selectTemplateLanguage" class="form-control">
+                        <option value="ta">Tamil (TA)</option>
+                        <option value="bn">Bengali (BN)</option>
+                        <!-- Populate with other 8th Schedule languages not yet added for this template -->
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button class="btn btn-primary" id="confirmAddTemplateLangBtn">Add Language Tab</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Super Admin");
+        const templateNameFromUrl = new URLSearchParams(window.location.search).get('name') || 'password_reset';
+        const templateNameDisplay = document.getElementById('templateNameDisplay');
+        const breadcrumbTemplateName = document.getElementById('breadcrumbTemplateName');
+        const infoTemplateName = document.getElementById('infoTemplateName');
+        const infoTemplateChannel = document.getElementById('infoTemplateChannel');
+        const placeholdersList = document.getElementById('availablePlaceholdersList');
+
+        // Mock data loading based on templateNameFromUrl
+        let currentTemplateType = 'email'; // Default, can be 'sms'
+        if (templateNameFromUrl === 'password_reset') {
+            templateNameDisplay.textContent = '[Password Reset]';
+            breadcrumbTemplateName.textContent = '[Password Reset]';
+            infoTemplateName.textContent = '[Password Reset]';
+            infoTemplateChannel.textContent = 'Email';
+            currentTemplateType = 'email';
+            placeholdersList.innerHTML = `<li><code>{{dp_name}}</code></li><li><code>{{reset_link}}</code></li><li><code>{{df_name}}</code> (if applicable)</li>`;
+        } else if (templateNameFromUrl === 'consent_confirmation') {
+            templateNameDisplay.textContent = '[Consent Confirmation]';
+            breadcrumbTemplateName.textContent = '[Consent Confirmation]';
+            infoTemplateName.textContent = '[Consent Confirmation]';
+            infoTemplateChannel.textContent = 'Email';
+            currentTemplateType = 'email';
+            placeholdersList.innerHTML = `<li><code>{{dp_name}}</code></li><li><code>{{df_name}}</code></li><li><code>{{purpose_name}}</code></li><li><code>{{consent_status}}</code></li>`;
+        } else if (templateNameFromUrl === 'otp_verification_sms') {
+            templateNameDisplay.textContent = '[OTP Verification SMS]';
+            breadcrumbTemplateName.textContent = '[OTP Verification SMS]';
+            infoTemplateName.textContent = '[OTP Verification SMS]';
+            infoTemplateChannel.textContent = 'SMS';
+            currentTemplateType = 'sms';
+            placeholdersList.innerHTML = `<li><code>{{otp_code}}</code></li><li><code>{{app_name}}</code> (Ark CMS)</li>`;
+        }
+        // Adjust subject field visibility based on channel
+        document.querySelectorAll('.templateContentForm').forEach(form => {
+            const lang = form.dataset.lang;
+            const subjectGroup = document.getElementById(`subjectGroup${lang.charAt(0).toUpperCase() + lang.slice(1)}`);
+            if (subjectGroup) {
+                subjectGroup.style.display = currentTemplateType === 'email' ? 'block' : 'none';
+            }
+        });
+
+
+        document.querySelectorAll('.templateContentForm').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const lang = e.currentTarget.dataset.lang.toUpperCase();
+                alert(`Template content for ${lang} saved (Mock).`);
+            });
+        });
+
+        document.getElementById('confirmAddTemplateLangBtn')?.addEventListener('click', () => {
+            const langSelect = document.getElementById('selectTemplateLanguage');
+            const langCode = langSelect.value;
+            const langName = langSelect.selectedOptions[0].text;
+            alert(`Language tab for ${langName} would be added (Mock).`);
+            document.getElementById('addTemplateLangModal').classList.remove('active');
+            // In a real app, dynamically create the new tab and form here
+        });
+    </script>
+</body>
+</html>

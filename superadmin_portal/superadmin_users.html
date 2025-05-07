@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Super Administrators - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                 <span class="nav-section-title">Ark CMS SuperAdmin</span>
+                <ul>
+                    <li><a href="superadmin_dashboard.html"><span class="material-symbols-outlined">space_dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Tenant Management</span>
+                <ul>
+                    <li><a href="superadmin_data_fiduciaries.html"><span class="material-symbols-outlined">domain</span> Data Fiduciaries</a></li>
+                </ul>
+                <span class="nav-section-title">Platform Management</span>
+                <ul>
+                    <li><a href="superadmin_users.html" class="active"><span class="material-symbols-outlined">shield_person</span> SuperAdmin Users</a></li>
+                    <li><a href="superadmin_global_settings.html"><span class="material-symbols-outlined">tune</span> Global Settings</a></li>
+                    <li><a href="superadmin_notification_templates.html"><span class="material-symbols-outlined">text_format</span> Notification Templates</a></li>
+                </ul>
+                <span class="nav-section-title">Monitoring</span>
+                <ul>
+                    <li><a href="superadmin_platform_health.html"><span class="material-symbols-outlined">monitor_heart</span> Platform Health</a></li>
+                    <li><a href="superadmin_platform_analytics.html"><span class="material-symbols-outlined">signal_cellular_alt</span> Platform Analytics</a></li>
+                    <li><a href="superadmin_system_logs.html"><span class="material-symbols-outlined">plagiarism</span> System Logs</a></li>
+                    <li><a href="superadmin_platform_audit_logs.html"><span class="material-symbols-outlined">admin_panel_settings</span> Platform Audit Logs</a></li>
+                </ul>
+                <!-- ... other SA nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="superadmin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Manage Super Administrators</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">SA</div>
+                        <span class="user-name-display ark-body-default">[SuperAdmin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="superadmin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar d-flex justify-between align-center">
+                <div><!-- Filters placeholder --></div>
+                <button class="btn btn-primary" data-modal-target="saUserModal" id="addSaUserBtn">
+                    <span class="material-symbols-outlined">person_add</span> Add New SuperAdmin
+                </button>
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Last Login</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[SuperAdmin One Name]</td>
+                            <td>super_admin@ark.com</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saUserModal" data-sa-name="[SuperAdmin One Name]" data-sa-email="super_admin@ark.com" data-sa-status="Active"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saResetPasswordModal" data-sa-email="super_admin@ark.com"><span class="material-symbols-outlined icon-only">lock_reset</span></button>
+                                <!-- Cannot deactivate self or only active SA -->
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>[SuperAdmin Two Name]</td>
+                            <td>sa_two@ark.com</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saUserModal" data-sa-name="[SuperAdmin Two Name]" data-sa-email="sa_two@ark.com" data-sa-status="Active"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saResetPasswordModal" data-sa-email="sa_two@ark.com"><span class="material-symbols-outlined icon-only">lock_reset</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saToggleStatusModal" data-sa-email="sa_two@ark.com" data-current-status="Active"><span class="material-symbols-outlined icon-only">toggle_off</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[Old SuperAdmin Name]</td>
+                            <td>old_sa@ark.com</td>
+                            <td><span class="badge badge-danger">Inactive</span></td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saUserModal" data-sa-name="[Old SuperAdmin Name]" data-sa-email="old_sa@ark.com" data-sa-status="Inactive"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saResetPasswordModal" data-sa-email="old_sa@ark.com"><span class="material-symbols-outlined icon-only">lock_reset</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="saToggleStatusModal" data-sa-email="old_sa@ark.com" data-current-status="Inactive"><span class="material-symbols-outlined icon-only">toggle_on</span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit SuperAdmin User Modal -->
+    <div class="modal-overlay" id="saUserModal">
+        <div class="modal-container" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3" id="saUserModalTitle">Add New SuperAdmin</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="saUserForm">
+                <input type="hidden" id="editSaUserId" name="saUserId">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="saUserFullName" class="ark-label">Full Name <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="text" id="saUserFullName" name="saUserFullName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="saUserEmail" class="ark-label">Email Address <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="email" id="saUserEmail" name="saUserEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group" id="saUserStatusGroup" style="display:none;">
+                        <label for="saUserStatus" class="ark-label">Status <span style="color: var(--ark-red-500);">*</span></label>
+                        <select id="saUserStatus" name="saUserStatus" class="form-control">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <p class="ark-body-small mt-2" id="saPasswordInfo" >A temporary password or setup link will be sent to the new user's email.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveSaUserBtn">Save SuperAdmin</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reset SuperAdmin Password Modal -->
+    <div class="modal-overlay" id="saResetPasswordModal">
+         <div class="modal-container" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Confirm Password Reset</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default">Are you sure you want to send password reset instructions to <strong id="saResetPasswordUserEmail"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Password reset instructions sent (Mock).'); this.closest('.modal-overlay').classList.remove('active');">Confirm Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deactivate/Activate SuperAdmin Modal -->
+    <div class="modal-overlay" id="saToggleStatusModal">
+        <div class="modal-container" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3" id="saToggleStatusModalTitle">Confirm Deactivation</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default" id="saToggleStatusModalText">Are you sure you want to deactivate the user <strong id="saToggleStatusUserEmail"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button type="button" class="btn btn-danger" id="saConfirmToggleStatusBtn" onclick="alert('SuperAdmin status changed (Mock).'); this.closest('.modal-overlay').classList.remove('active');">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Super Admin");
+        
+        const saUserModal = document.getElementById('saUserModal');
+        const saUserForm = document.getElementById('saUserForm');
+        const saUserModalTitle = document.getElementById('saUserModalTitle');
+        const saUserStatusGroup = document.getElementById('saUserStatusGroup');
+        const editSaUserIdInput = document.getElementById('editSaUserId');
+        const saUserFullNameInput = document.getElementById('saUserFullName');
+        const saUserEmailInput = document.getElementById('saUserEmail');
+        const saUserStatusSelect = document.getElementById('saUserStatus');
+        const saveSaUserBtn = document.getElementById('saveSaUserBtn');
+        const saPasswordInfo = document.getElementById('saPasswordInfo');
+
+
+        document.getElementById('addSaUserBtn').addEventListener('click', () => {
+            saUserModalTitle.textContent = 'Add New SuperAdmin';
+            saUserForm.reset();
+            editSaUserIdInput.value = '';
+            saUserStatusGroup.style.display = 'none'; 
+            saUserEmailInput.disabled = false;
+            saPasswordInfo.style.display = 'block';
+            saveSaUserBtn.textContent = 'Save SuperAdmin';
+        });
+        
+        document.querySelectorAll('button[data-modal-target="saUserModal"]').forEach(btn => {
+            if (btn.id === 'addSaUserBtn') return;
+            btn.addEventListener('click', (e) => {
+                const target = e.currentTarget;
+                saUserModalTitle.textContent = `Edit SuperAdmin ${target.dataset.saName}`;
+                saUserForm.reset();
+                editSaUserIdInput.value = target.dataset.saEmail; // Using email as mock ID
+                saUserFullNameInput.value = target.dataset.saName;
+                saUserEmailInput.value = target.dataset.saEmail;
+                saUserEmailInput.disabled = true;
+                saUserStatusSelect.value = target.dataset.saStatus;
+                saUserStatusGroup.style.display = 'block';
+                saPasswordInfo.style.display = 'none';
+                saveSaUserBtn.textContent = 'Update SuperAdmin';
+            });
+        });
+
+        saUserForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (editSaUserIdInput.value) {
+                alert(`SuperAdmin ${saUserFullNameInput.value} updated (Mock).`);
+            } else {
+                alert(`SuperAdmin ${saUserFullNameInput.value} added (Mock). An invite will be sent.`);
+            }
+            saUserModal.classList.remove('active');
+        });
+
+        document.querySelectorAll('[data-modal-target="saResetPasswordModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.getElementById('saResetPasswordUserEmail').textContent = e.currentTarget.dataset.saEmail;
+            });
+        });
+
+        document.querySelectorAll('[data-modal-target="saToggleStatusModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const currentStatus = e.currentTarget.dataset.currentStatus;
+                const action = currentStatus === 'Active' ? 'deactivate' : 'activate';
+                const btnClass = currentStatus === 'Active' ? 'btn-danger' : 'btn-primary';
+                document.getElementById('saToggleStatusModalTitle').textContent = `Confirm ${action.charAt(0).toUpperCase() + action.slice(1)}`;
+                document.getElementById('saToggleStatusModalText').innerHTML = `Are you sure you want to ${action} the SuperAdmin <strong id="saToggleStatusUserEmail">${e.currentTarget.dataset.saEmail}</strong>?`;
+                const confirmBtn = document.getElementById('saConfirmToggleStatusBtn');
+                confirmBtn.textContent = `Confirm ${action.charAt(0).toUpperCase() + action.slice(1)}`;
+                confirmBtn.className = `btn ${btnClass}`;
+            });
+        });
+
+    </script>
+</body>
+</html>

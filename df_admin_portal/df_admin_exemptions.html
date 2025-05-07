@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemption Claims (Sec 17) - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name]</span>
+                <ul>
+                    <li><a href="df_admin_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <!-- ... other nav sections ... -->
+                <span class="nav-section-title">Organization Settings</span>
+                <ul>
+                    <li><a href="df_admin_profile.html"><span class="material-symbols-outlined">business</span> DF Profile</a></li>
+                    <li><a href="df_admin_user_management.html"><span class="material-symbols-outlined">manage_accounts</span> User Management</a></li>
+                    <li><a href="df_admin_processors.html"><span class="material-symbols-outlined">hub</span> Data Processors</a></li>
+                    <li><a href="df_admin_activities.html"><span class="material-symbols-outlined">schema</span> Processing Activities</a></li>
+                    <li><a href="df_admin_exemptions.html" class="active"><span class="material-symbols-outlined">gavel</span> Exemptions</a></li>
+                </ul>
+                <!-- ... other nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_admin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Exemption Claims (Sec 17)</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">AD</div>
+                        <span class="user-name-display ark-body-default">[DF Admin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="df_admin_profile.html">My Profile</a>
+                        <a href="df_admin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar d-flex justify-between align-center">
+                <div><!-- Filters placeholder --></div>
+                <button class="btn btn-primary" data-modal-target="exemptionModal" id="addExemptionBtn">
+                    <span class="material-symbols-outlined">add_circle</span> Document New Exemption
+                </button>
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Exemption ID</th>
+                            <th>DPDPA Section</th>
+                            <th>Applied To (Type/Name)</th>
+                            <th>Documented On</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>EXM_001</td>
+                            <td>Sec 17(1)(a) - Legal Right/Claim</td>
+                            <td>Activity: [Internal Fraud Investigation]</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="exemptionModal" data-exemption-id="EXM_001" data-dpdpa-section="Sec 17(1)(a)" data-applied-to-type="Activity" data-applied-to-name="[Internal Fraud Investigation]" data-justification="[Investigation of suspected fraudulent activity related to user XYZ...]" data-status="Active"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <!-- View Details could navigate to a read-only page if justifications are long -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EXM_002</td>
+                            <td>Sec 17(1)(c) - Prevention/Detection of Offence</td>
+                            <td>Purpose: [Security Monitoring]</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                             <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="exemptionModal" data-exemption-id="EXM_002" data-dpdpa-section="Sec 17(1)(c)" data-applied-to-type="Purpose" data-applied-to-name="[Security Monitoring]" data-justification="[Processing logs for identifying security threats and unauthorized access attempts...]" data-status="Active"><span class="material-symbols-outlined icon-only">edit</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>EXM_003</td>
+                            <td>Sec 17(2)(b) - Research/Archiving (Non-identifiable)</td>
+                            <td>Data Category: [Anonymized Usage Data]</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-neutral">Inactive</span></td>
+                             <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="exemptionModal" data-exemption-id="EXM_003" data-dpdpa-section="Sec 17(2)(b)" data-applied-to-type="Data Category" data-applied-to-name="[Anonymized Usage Data]" data-justification="[Historical research on product usage patterns, data fully anonymized...]" data-status="Inactive"><span class="material-symbols-outlined icon-only">edit</span></button>
+                            </td>
+                        </tr>
+                        <!-- More placeholder rows -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of 1</span>
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Document New/Edit Exemption Modal -->
+    <div class="modal-overlay" id="exemptionModal">
+        <div class="modal-container" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3" id="exemptionModalTitle">Document New Exemption</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="exemptionForm">
+                <input type="hidden" id="editExemptionId" name="exemptionId">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="dpdpaSection" class="ark-label">DPDPA Section Clause <span style="color: var(--ark-red-500);">*</span></label>
+                        <select id="dpdpaSection" name="dpdpaSection" class="form-control" required>
+                            <option value="">-- Select Section/Clause --</option>
+                            <option value="Sec 17(1)(a)">Sec 17(1)(a) - Enforcing legal right or claim</option>
+                            <option value="Sec 17(1)(b)">Sec 17(1)(b) - Judicial/Quasi-judicial/Regulatory function</option>
+                            <option value="Sec 17(1)(c)">Sec 17(1)(c) - Prevention/detection/investigation of offence</option>
+                            <option value="Sec 17(1)(d)">Sec 17(1)(d) - Processing data of non-Indian DPs (contractual)</option>
+                            <option value="Sec 17(1)(e)">Sec 17(1)(e) - Mergers/Amalgamations approved by court</option>
+                            <option value="Sec 17(1)(f)">Sec 17(1)(f) - Ascertaining financial info of defaulters</option>
+                            <option value="Sec 17(2)(a)">Sec 17(2)(a) - State instrumentality (Sovereignty, Security, etc.)</option>
+                            <option value="Sec 17(2)(b)">Sec 17(2)(b) - Research, archiving, statistical (non-decision specific)</option>
+                            <!-- Add other relevant clauses -->
+                        </select>
+                    </div>
+                     <div class="form-group">
+                        <label for="appliedToType" class="ark-label">Applied To Type <span style="color: var(--ark-red-500);">*</span></label>
+                        <select id="appliedToType" name="appliedToType" class="form-control" required>
+                            <option value="">-- Select Type --</option>
+                            <option value="Activity">Processing Activity</option>
+                            <option value="Purpose">Purpose</option>
+                            <option value="DataCategory">Data Category</option>
+                            <option value="General">General (If not specific to one)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appliedToName" class="ark-label">Applied To (Name/Identifier) <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="text" id="appliedToName" name="appliedToName" class="form-control" placeholder="Name of Activity, Purpose Code, or Category Code" required>
+                        <p class="helper-text">E.g., [Internal Fraud Investigation], ACC_MGMT, EMAIL_ADDRESS</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="justification" class="ark-label">Justification <span style="color: var(--ark-red-500);">*</span></label>
+                        <textarea id="justification" name="justification" class="form-control" rows="5" placeholder="Detailed reasoning for claiming this exemption..." required></textarea>
+                    </div>
+                     <div class="form-group" id="exemptionStatusGroup" style="display:none;">
+                        <label for="exemptionStatus" class="ark-label">Status <span style="color: var(--ark-red-500);">*</span></label>
+                        <select id="exemptionStatus" name="exemptionStatus" class="form-control">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveExemptionBtn">Save Exemption</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Admin Name");
+        const exemptionModal = document.getElementById('exemptionModal');
+        const exemptionForm = document.getElementById('exemptionForm');
+        const exemptionModalTitle = document.getElementById('exemptionModalTitle');
+        const editExemptionIdInput = document.getElementById('editExemptionId');
+        const saveExemptionBtn = document.getElementById('saveExemptionBtn');
+        const exemptionStatusGroup = document.getElementById('exemptionStatusGroup');
+
+        document.getElementById('addExemptionBtn').addEventListener('click', () => {
+            exemptionModalTitle.textContent = 'Document New Exemption';
+            exemptionForm.reset();
+            editExemptionIdInput.value = '';
+            exemptionStatusGroup.style.display = 'none';
+            saveExemptionBtn.textContent = 'Save Exemption';
+        });
+
+        document.querySelectorAll('button[data-modal-target="exemptionModal"]').forEach(btn => {
+            if (btn.id === 'addExemptionBtn') return;
+            btn.addEventListener('click', (e) => {
+                const target = e.currentTarget;
+                exemptionModalTitle.textContent = `Edit Exemption - ${target.dataset.exemptionId}`;
+                exemptionForm.reset();
+                editExemptionIdInput.value = target.dataset.exemptionId;
+                document.getElementById('dpdpaSection').value = target.dataset.dpdpaSection;
+                document.getElementById('appliedToType').value = target.dataset.appliedToType;
+                document.getElementById('appliedToName').value = target.dataset.appliedToName;
+                document.getElementById('justification').value = target.dataset.justification;
+                document.getElementById('exemptionStatus').value = target.dataset.status;
+                exemptionStatusGroup.style.display = 'block';
+                saveExemptionBtn.textContent = 'Update Exemption';
+            });
+        });
+        
+        exemptionForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (editExemptionIdInput.value) {
+                alert(`Exemption ${editExemptionIdInput.value} updated (Mock).`);
+            } else {
+                alert(`New exemption documented (Mock).`);
+            }
+            exemptionModal.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

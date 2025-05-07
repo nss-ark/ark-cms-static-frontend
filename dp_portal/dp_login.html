@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DP Login - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="centered-form-container">
+        <div class="form-wrapper">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <h1 class="ark-h1">Data Principal Login</h1>
+            <form id="dp-login-form">
+                <div class="credential-step">
+                    <div class="form-group">
+                        <label for="dp-email" class="ark-label">Email Address or Phone Number</label>
+                        <input type="text" id="dp-email" name="email_phone" class="form-control" placeholder="Enter your registered email or phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dp-password" class="ark-label">Password</label>
+                        <input type="password" id="dp-password" name="password" class="form-control" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="ark-link btn-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">Login</button>
+                </div>
+
+                <!-- OTP Step (Hidden by default) -->
+                <div class="otp-step" style="display: none;">
+                    <p class="ark-body-default mb-3">Please enter the One-Time Password sent to your registered authenticator app or email.</p>
+                    <div class="form-group">
+                        <label for="dp-otp" class="ark-label">OTP Code</label>
+                        <input type="text" id="dp-otp" name="otp" class="form-control" placeholder="Enter OTP" pattern="\d{6}" title="OTP must be 6 digits">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full-width">Verify OTP & Login</button>
+                     <div class="form-group mt-3">
+                        <a href="#" class="ark-link btn-link resend-otp-link">Resend OTP</a>
+                    </div>
+                </div>
+
+            </form>
+            <p class="ark-body-small text-center mt-4">
+                Don't have an account? <a href="dp_register.html" class="ark-link">Register Now</a>
+            </p>
+            <p class="ark-body-small text-center mt-2">
+                <a href="#" class="ark-link">Privacy Policy</a> | <a href="#" class="ark-link">Terms of Service</a>
+            </p>
+        </div>
+    </div>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

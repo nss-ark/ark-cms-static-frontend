@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process DP Request - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - Operator</span>
+                <ul>
+                    <li><a href="df_operator_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">My Assigned Tasks</span>
+                <ul>
+                    <li><a href="df_operator_assigned_requests.html" class="active"><span class="material-symbols-outlined">assignment_ind</span> DP Requests</a></li>
+                    <li><a href="df_operator_assigned_grievances.html"><span class="material-symbols-outlined">quickreply</span> Grievances</a></li>
+                </ul>
+                <span class="nav-section-title">Help</span>
+                <ul>
+                    <li><a href="#"><span class="material-symbols-outlined">help</span> Help/Support</a></li>
+                </ul>
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_operator_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Process DP Request - REQ_00123</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">OP</div>
+                        <span class="user-name-display ark-body-default">[DF Operator Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_operator_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="df_operator_assigned_requests.html" class="ark-link">My Assigned DP Requests</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page">Process REQ_00123</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request Summary</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>Data Principal:</strong> dp_user_001@ark.com</p>
+                    <p><strong>Request Type:</strong> Access (Sec 11)</p>
+                    <p><strong>Submitted Date:</strong> [YYYY-MM-DD HH:MM]</p>
+                    <p><strong>Current Status:</strong> <span class="badge badge-info">InProgress</span></p>
+                    <p><strong>SLA Status:</strong> <span class="badge badge-success">Within SLA</span> (3 days remaining)</p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request Details from DP</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default">"I would like to request a summary of all personal data you process about me, and a list of any third parties with whom this data has been shared."</p>
+                    <p class="ark-body-small mt-2"><em>No attachments.</em></p>
+                </div>
+            </div>
+
+             <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Related DP Information</h2>
+                </div>
+                <div class="card-content">
+                    <button class="btn btn-subtle" data-modal-target="dpConsentSummaryModal">
+                        <span class="material-symbols-outlined">visibility</span> View DP Consent Summary
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="ark-h3">Processing Form</h2>
+                </div>
+                <form id="processRequestForm">
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="requestStatus" class="ark-label">Update Status <span style="color: var(--ark-red-500);">*</span></label>
+                            <select id="requestStatus" name="requestStatus" class="form-control" required>
+                                <option value="InProgress" selected>In Progress</option>
+                                <option value="AwaitingDPInfo">Awaiting DP Information</option>
+                                <option value="Resolved">Resolved</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="resolutionDetails" class="ark-label">Resolution Details / Reason for Rejection</label>
+                            <textarea id="resolutionDetails" name="resolutionDetails" class="form-control" rows="5" placeholder="Enter details of action taken, information provided, or reason for rejection..."></textarea>
+                            <p class="helper-text">This will be visible to the Data Principal if the status is Resolved or Rejected.</p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                         <button type="submit" class="btn btn-primary">Update Request</button>
+                    </div>
+                </form>
+            </div>
+
+             <div class="card mt-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request History</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="ark-body-default" style="list-style: none; padding: 0;">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>Submitted by DP</strong> - [YYYY-MM-DD HH:MM]
+                        </li>
+                        <li style="padding: var(--space-sm) 0;">
+                            <strong>Assigned to [DF Operator Name]</strong> by [DF Admin Name] - [YYYY-MM-DD HH:MM]
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- DP Consent Summary Modal -->
+    <div class="modal-overlay" id="dpConsentSummaryModal">
+        <div class="modal-container" style="max-width: 700px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Consent Summary for dp_user_001@ark.com</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Purpose</th>
+                            <th>Status</th>
+                            <th>Consent Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[Marketing Emails]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD]</td>
+                        </tr>
+                        <tr>
+                            <td>[Product Usage Analytics]</td>
+                            <td><span class="badge badge-danger">Withdrawn</span></td>
+                            <td>[YYYY-MM-DD]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Operator Name");
+        const processRequestForm = document.getElementById('processRequestForm');
+        if(processRequestForm) {
+            processRequestForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Request status updated (Mock).');
+                // In a real app, update UI or redirect.
+            });
+        }
+    </script>
+</body>
+</html>

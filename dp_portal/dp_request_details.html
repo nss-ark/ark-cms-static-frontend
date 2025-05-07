@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Details - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dp_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li><a href="dp_consents.html"><span class="material-symbols-outlined">fact_check</span> My Consents</a></li>
+                    <li><a href="dp_requests.html" class="active"><span class="material-symbols-outlined">rule</span> My Rights Requests</a></li>
+                    <li><a href="dp_grievances.html"><span class="material-symbols-outlined">report_problem</span> My Grievances</a></li>
+                    <li><a href="dp_profile.html"><span class="material-symbols-outlined">account_circle</span> My Profile</a></li>
+                    <li><a href="dp_settings.html"><span class="material-symbols-outlined">settings</span> Settings</a></li>
+                    <li><a href="dp_notifications.html"><span class="material-symbols-outlined">notifications</span> Notifications</a></li>
+                </ul>
+                <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="dp_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Request Details - <span id="requestIDDisplay">REQ_00123</span></h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">DP</div>
+                        <span class="user-name-display ark-body-default">[DP Full Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="dp_profile.html">My Profile</a>
+                        <a href="dp_settings.html">Settings</a>
+                        <div class="divider"></div>
+                        <a href="dp_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="dp_requests.html" class="ark-link">My Rights Requests</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page" id="breadcrumbRequestID">Request REQ_00123</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request Summary</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>Data Fiduciary:</strong> [Example Corp]</p>
+                    <p><strong>Request Type:</strong> Access (Sec 11)</p>
+                    <p><strong>Submitted On:</strong> [YYYY-MM-DD HH:MM]</p>
+                    <p><strong>Current Status:</strong> <span class="badge badge-info" id="requestStatusBadge">In Progress</span></p>
+                    <p id="resolvedOnP" style="display:none;"><strong>Resolved On:</strong> <span id="resolvedOnDate">[YYYY-MM-DD HH:MM]</span></p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Your Request Details</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default">"I would like to request a summary of all personal data you process about me, and a list of any third parties with whom this data has been shared."</p>
+                    <p class="ark-body-small mt-2"><em>No attachments.</em></p>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="resolutionDetailsCard" style="display:none;">
+                <div class="card-header">
+                    <h2 class="ark-h3">Resolution Details from Data Fiduciary</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default" id="resolutionTextPlaceholder">[Placeholder for resolution details provided by DF]</p>
+                </div>
+            </div>
+            
+            <div class="card mb-4" id="addInfoSection" style="display:none;">
+                 <div class="card-header">
+                    <h2 class="ark-h3">Provide Additional Information</h2>
+                </div>
+                <form id="addInfoForm">
+                    <div class="card-content">
+                        <p class="ark-body-default mb-2">The Data Fiduciary has requested additional information to process your request. Please provide the details below:</p>
+                        <div class="form-group">
+                            <label for="additionalInfo" class="ark-label">Additional Details <span style="color: var(--ark-red-500);">*</span></label>
+                            <textarea id="additionalInfo" name="additionalInfo" class="form-control" rows="5" placeholder="Enter the additional information requested..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-primary">Submit Information</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request History</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="ark-body-default" style="list-style: none; padding: 0;" id="requestHistoryList">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>Submitted by You</strong> - [YYYY-MM-DD HH:MM]
+                        </li>
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>Status Updated to 'In Progress'</strong> by [Example Corp Operator] - [YYYY-MM-DD HH:MM]
+                        </li>
+                        <!-- More history items will be added dynamically or based on status -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Data Principal User");
+
+        // Mock data and logic for request details page
+        const urlParams = new URLSearchParams(window.location.search);
+        const requestId = urlParams.get('id') || 'REQ_00123';
+        const mockStatus = urlParams.get('status') || 'inprogress'; // 'inprogress', 'resolved', 'rejected', 'awaitinginfo'
+
+        document.getElementById('requestIDDisplay').textContent = requestId;
+        document.getElementById('breadcrumbRequestID').textContent = `Request ${requestId}`;
+        const statusBadge = document.getElementById('requestStatusBadge');
+        const resolvedOnP = document.getElementById('resolvedOnP');
+        const resolvedOnDate = document.getElementById('resolvedOnDate');
+        const resolutionDetailsCard = document.getElementById('resolutionDetailsCard');
+        const resolutionTextPlaceholder = document.getElementById('resolutionTextPlaceholder');
+        const addInfoSection = document.getElementById('addInfoSection');
+
+        if (mockStatus === 'resolved') {
+            statusBadge.textContent = 'Resolved';
+            statusBadge.className = 'badge badge-success';
+            resolvedOnP.style.display = 'block';
+            resolvedOnDate.textContent = '[YYYY-MM-DD HH:MM - Resolved Date]';
+            resolutionDetailsCard.style.display = 'block';
+            resolutionTextPlaceholder.textContent = 'Your request for data access has been fulfilled. A summary document has been sent to your registered email address.';
+        } else if (mockStatus === 'rejected') {
+            statusBadge.textContent = 'Rejected';
+            statusBadge.className = 'badge badge-danger';
+            resolvedOnP.style.display = 'block'; // Show resolved/rejected date
+            resolvedOnDate.textContent = '[YYYY-MM-DD HH:MM - Rejected Date]';
+            resolutionDetailsCard.style.display = 'block';
+            resolutionTextPlaceholder.textContent = 'Your request could not be processed due to [Reason for rejection...].';
+        } else if (mockStatus === 'awaitinginfo') {
+            statusBadge.textContent = 'Awaiting Your Information';
+            statusBadge.className = 'badge badge-warning';
+            addInfoSection.style.display = 'block';
+             resolutionDetailsCard.style.display = 'block'; // Show the DF's request for info
+            resolutionTextPlaceholder.textContent = 'We require you to verify your identity by providing a copy of your government-issued ID to proceed with this request.';
+        } else { // inprogress
+            statusBadge.textContent = 'In Progress';
+            statusBadge.className = 'badge badge-info';
+        }
+
+        const addInfoForm = document.getElementById('addInfoForm');
+        if (addInfoForm) {
+            addInfoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Additional information submitted (Mock). The request status will be updated.');
+                // Simulate status change
+                statusBadge.textContent = 'In Progress';
+                statusBadge.className = 'badge badge-info';
+                addInfoSection.style.display = 'none';
+                resolutionDetailsCard.style.display = 'none'; // Hide previous request for info
+                // Add to history
+                const historyList = document.getElementById('requestHistoryList');
+                const newItem = document.createElement('li');
+                newItem.style.cssText = "padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);";
+                newItem.innerHTML = `<strong>Additional Information Submitted by You</strong> - [Just Now]`;
+                historyList.appendChild(newItem);
+            });
+        }
+
+    </script>
+</body>
+</html>

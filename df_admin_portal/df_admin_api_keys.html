@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Keys Management - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name]</span>
+                <ul>
+                    <li><a href="df_admin_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <!-- ... other nav sections ... -->
+                 <span class="nav-section-title">Integrations</span>
+                <ul>
+                    <li><a href="df_admin_api_keys.html" class="active"><span class="material-symbols-outlined">key</span> API Keys</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">webhook</span> Webhooks (Future)</a></li>
+                    <li><a href="df_admin_cookie_banner_config.html"><span class="material-symbols-outlined">cookie</span> Cookie Banner</a></li>
+                </ul>
+                <!-- ... other nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_admin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">API Keys</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">AD</div>
+                        <span class="user-name-display ark-body-default">[DF Admin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="df_admin_profile.html">My Profile</a>
+                        <a href="df_admin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar d-flex justify-between align-center">
+                <div><!-- Filters placeholder --></div>
+                <button class="btn btn-primary" data-modal-target="generateApiKeyModal" id="generateApiKeyBtn">
+                    <span class="material-symbols-outlined">add_key</span> Generate New API Key
+                </button>
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Key Name</th>
+                            <th>Key (Masked)</th>
+                            <th>Created Date</th>
+                            <th>Last Used</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[Production Server]</td>
+                            <td>ark_sk_live_****1234</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="toggleKeyStatusModal" data-key-name="[Production Server]" data-current-status="Active"><span class="material-symbols-outlined icon-only">toggle_off</span></button>
+                                <button class="btn btn-sm btn-subtle btn-danger" data-modal-target="deleteKeyModal" data-key-name="[Production Server]"><span class="material-symbols-outlined icon-only">delete</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[Staging Environment]</td>
+                            <td>ark_sk_test_****5678</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="toggleKeyStatusModal" data-key-name="[Staging Environment]" data-current-status="Active"><span class="material-symbols-outlined icon-only">toggle_off</span></button>
+                                <button class="btn btn-sm btn-subtle btn-danger" data-modal-target="deleteKeyModal" data-key-name="[Staging Environment]"><span class="material-symbols-outlined icon-only">delete</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[Old Integration Key]</td>
+                            <td>ark_sk_live_****abcd</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td><span class="badge badge-danger">Inactive</span></td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="toggleKeyStatusModal" data-key-name="[Old Integration Key]" data-current-status="Inactive"><span class="material-symbols-outlined icon-only">toggle_on</span></button>
+                                <button class="btn btn-sm btn-subtle btn-danger" data-modal-target="deleteKeyModal" data-key-name="[Old Integration Key]"><span class="material-symbols-outlined icon-only">delete</span></button>
+                            </td>
+                        </tr>
+                        <!-- More placeholder rows -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of 1</span>
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generate API Key Modal -->
+    <div class="modal-overlay" id="generateApiKeyModal">
+        <div class="modal-container" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Generate New API Key</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="generateApiKeyForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="apiKeyName" class="ark-label">Key Name <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="text" id="apiKeyName" name="apiKeyName" class="form-control" placeholder="e.g., Production Server, Test Environment" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="ark-label">Permissions <span style="color: var(--ark-red-500);">*</span></label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="permReadConsents" name="permissions" value="read_consents" checked>
+                            <label class="form-check-label" for="permReadConsents">Read Consents</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="permValidateConsents" name="permissions" value="validate_consents" checked>
+                            <label class="form-check-label" for="permValidateConsents">Validate Consents</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="permManageConsents" name="permissions" value="manage_consents">
+                            <label class="form-check-label" for="permManageConsents">Manage Consents (Record/Update)</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="permManageDps" name="permissions" value="manage_dps">
+                            <label class="form-check-label" for="permManageDps">Manage Data Principals (Map)</label>
+                        </div>
+                        <!-- Add more permissions as needed -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Generate Key</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Key Generated Modal -->
+    <div class="modal-overlay" id="keyGeneratedModal">
+        <div class="modal-container" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">API Key Generated Successfully!</h3>
+                <!-- No close button initially, user must acknowledge -->
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default">Your new API key has been generated. Please copy it now as <strong>it will not be shown again</strong> for security reasons.</p>
+                <div class="form-group mt-3">
+                    <input type="text" id="generatedApiKey" class="form-control" value="ark_sk_live_mockGeneratedKeyValue1234567890" readonly>
+                </div>
+                <button class="btn btn-subtle btn-full-width mt-2" id="copyApiKeyBtn">
+                    <span class="material-symbols-outlined">content_copy</span> Copy to Clipboard
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="confirmApiKeyCopiedBtn">I've Copied My Key</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deactivate/Activate Key Modal -->
+    <div class="modal-overlay" id="toggleKeyStatusModal">
+        <div class="modal-container" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3" id="toggleKeyStatusTitle">Confirm Deactivation</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default" id="toggleKeyStatusText">Are you sure you want to deactivate the API key <strong id="toggleKeyName"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmToggleKeyBtn" onclick="alert('API Key status changed (Mock).'); this.closest('.modal-overlay').classList.remove('active');">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Key Modal -->
+    <div class="modal-overlay" id="deleteKeyModal">
+        <div class="modal-container" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Confirm Delete API Key</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default">Are you sure you want to permanently delete the API key <strong id="deleteKeyName"></strong>? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button type="button" class="btn btn-danger" onclick="alert('API Key deleted (Mock).'); this.closest('.modal-overlay').classList.remove('active');">Confirm Delete</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Admin Name");
+
+        // Generate API Key Modal
+        const generateApiKeyForm = document.getElementById('generateApiKeyForm');
+        const generateApiKeyModal = document.getElementById('generateApiKeyModal');
+        const keyGeneratedModal = document.getElementById('keyGeneratedModal');
+        const generatedApiKeyInput = document.getElementById('generatedApiKey');
+
+        generateApiKeyForm?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, generate a key and set it to generatedApiKeyInput.value
+            generatedApiKeyInput.value = "ark_sk_live_mock_" + Math.random().toString(36).substring(2, 15);
+            generateApiKeyModal.classList.remove('active');
+            keyGeneratedModal.classList.add('active');
+        });
+
+        document.getElementById('copyApiKeyBtn')?.addEventListener('click', () => {
+            generatedApiKeyInput.select();
+            document.execCommand('copy'); // Deprecated, but works for simple mock
+            alert('API Key copied to clipboard!');
+        });
+
+        document.getElementById('confirmApiKeyCopiedBtn')?.addEventListener('click', () => {
+            keyGeneratedModal.classList.remove('active');
+            // Refresh table or add new key to table (mock)
+            alert('New API Key row would be added to the table here.');
+        });
+
+        // Toggle Key Status Modal
+        document.querySelectorAll('[data-modal-target="toggleKeyStatusModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const keyName = e.currentTarget.dataset.keyName;
+                const currentStatus = e.currentTarget.dataset.currentStatus;
+                const action = currentStatus === 'Active' ? 'deactivate' : 'activate';
+                const btnClass = currentStatus === 'Active' ? 'btn-danger' : 'btn-primary';
+                
+                document.getElementById('toggleKeyStatusTitle').textContent = `Confirm ${action.charAt(0).toUpperCase() + action.slice(1)}`;
+                document.getElementById('toggleKeyStatusText').innerHTML = `Are you sure you want to ${action} the API key <strong>${keyName}</strong>?`;
+                document.getElementById('toggleKeyName').textContent = keyName; // For the strong tag if needed, not used in current text
+                const confirmBtn = document.getElementById('confirmToggleKeyBtn');
+                confirmBtn.textContent = `Confirm ${action.charAt(0).toUpperCase() + action.slice(1)}`;
+                confirmBtn.className = `btn ${btnClass}`;
+            });
+        });
+
+        // Delete Key Modal
+        document.querySelectorAll('[data-modal-target="deleteKeyModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.getElementById('deleteKeyName').textContent = e.currentTarget.dataset.keyName;
+            });
+        });
+    </script>
+</body>
+</html>

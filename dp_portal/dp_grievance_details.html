@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievance Details - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dp_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li><a href="dp_consents.html"><span class="material-symbols-outlined">fact_check</span> My Consents</a></li>
+                    <li><a href="dp_requests.html"><span class="material-symbols-outlined">rule</span> My Rights Requests</a></li>
+                    <li><a href="dp_grievances.html" class="active"><span class="material-symbols-outlined">report_problem</span> My Grievances</a></li>
+                    <li><a href="dp_profile.html"><span class="material-symbols-outlined">account_circle</span> My Profile</a></li>
+                    <li><a href="dp_settings.html"><span class="material-symbols-outlined">settings</span> Settings</a></li>
+                    <li><a href="dp_notifications.html"><span class="material-symbols-outlined">notifications</span> Notifications</a></li>
+                </ul>
+                <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="dp_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Grievance Details - <span id="grievanceIDDisplay">GRV_00057</span></h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">DP</div>
+                        <span class="user-name-display ark-body-default">[DP Full Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="dp_profile.html">My Profile</a>
+                        <a href="dp_settings.html">Settings</a>
+                        <div class="divider"></div>
+                        <a href="dp_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="dp_grievances.html" class="ark-link">My Grievances</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page" id="breadcrumbGrievanceID">Grievance GRV_00057</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Grievance Summary</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>Data Fiduciary:</strong> [ABC Ltd]</p>
+                    <p><strong>Submitted On:</strong> [YYYY-MM-DD HH:MM]</p>
+                    <p><strong>Current Status:</strong> <span class="badge badge-info" id="grievanceStatusBadge">In Progress</span></p>
+                    <p id="grvResolvedOnP" style="display:none;"><strong>Resolved On:</strong> <span id="grvResolvedOnDate">[YYYY-MM-DD HH:MM]</span></p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Your Grievance Details</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default">"I am concerned about the recent changes to the privacy policy and how my data for [Specific Service] is being used without clear re-consent. I attempted to contact support but did not receive a satisfactory response."</p>
+                    <p class="ark-body-small mt-2"><em>Attachments: [privacy_policy_screenshot.png]</em> <a href="#" class="btn-link btn-sm">(Download)</a></p>
+                </div>
+            </div>
+
+            <div class="card mb-4" id="grvResolutionDetailsCard" style="display:none;">
+                <div class="card-header">
+                    <h2 class="ark-h3">Resolution Details from Data Fiduciary</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default" id="grvResolutionTextPlaceholder">[Placeholder for resolution details provided by DF]</p>
+                </div>
+            </div>
+            
+            <div class="card mb-4" id="grvAddInfoSection" style="display:none;">
+                 <div class="card-header">
+                    <h2 class="ark-h3">Provide Additional Information</h2>
+                </div>
+                <form id="grvAddInfoForm">
+                    <div class="card-content">
+                        <p class="ark-body-default mb-2">The Data Fiduciary has requested additional information to process your grievance. Please provide the details below:</p>
+                        <div class="form-group">
+                            <label for="grvAdditionalInfo" class="ark-label">Additional Details <span style="color: var(--ark-red-500);">*</span></label>
+                            <textarea id="grvAdditionalInfo" name="grvAdditionalInfo" class="form-control" rows="5" placeholder="Enter the additional information requested..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-primary">Submit Information</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="ark-h3">Grievance History</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="ark-body-default" style="list-style: none; padding: 0;" id="grievanceHistoryList">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>Submitted by You</strong> - [YYYY-MM-DD HH:MM]
+                        </li>
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>Status Updated to 'In Progress'</strong> by [ABC Ltd DPO] - [YYYY-MM-DD HH:MM]
+                        </li>
+                        <!-- More history items will be added dynamically or based on status -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Data Principal User");
+
+        // Mock data and logic for grievance details page
+        const grvUrlParams = new URLSearchParams(window.location.search);
+        const grievanceId = grvUrlParams.get('id') || 'GRV_00057';
+        const grvMockStatus = grvUrlParams.get('status') || 'inprogress'; // 'inprogress', 'resolved', 'awaitinginfo', 'escalated'
+
+        document.getElementById('grievanceIDDisplay').textContent = grievanceId;
+        document.getElementById('breadcrumbGrievanceID').textContent = `Grievance ${grievanceId}`;
+        const grvStatusBadge = document.getElementById('grievanceStatusBadge');
+        const grvResolvedOnP = document.getElementById('grvResolvedOnP');
+        const grvResolvedOnDate = document.getElementById('grvResolvedOnDate');
+        const grvResolutionDetailsCard = document.getElementById('grvResolutionDetailsCard');
+        const grvResolutionTextPlaceholder = document.getElementById('grvResolutionTextPlaceholder');
+        const grvAddInfoSection = document.getElementById('grvAddInfoSection');
+
+
+        if (grvMockStatus === 'resolved') {
+            grvStatusBadge.textContent = 'Resolved';
+            grvStatusBadge.className = 'badge badge-success';
+            grvResolvedOnP.style.display = 'block';
+            grvResolvedOnDate.textContent = '[YYYY-MM-DD HH:MM - Resolved Date]';
+            grvResolutionDetailsCard.style.display = 'block';
+            grvResolutionTextPlaceholder.textContent = 'Your grievance has been addressed. We have clarified the policy changes and updated your consent preferences as discussed.';
+        } else if (grvMockStatus === 'awaitinginfo') {
+            grvStatusBadge.textContent = 'Awaiting Your Information';
+            grvStatusBadge.className = 'badge badge-warning';
+            grvAddInfoSection.style.display = 'block';
+            grvResolutionDetailsCard.style.display = 'block'; 
+            grvResolutionTextPlaceholder.textContent = 'To address your concern about [Specific Service], please provide the date you last accessed this service.';
+        } else if (grvMockStatus === 'escalated') {
+            grvStatusBadge.textContent = 'Escalated';
+            grvStatusBadge.className = 'badge badge-danger'; // Using danger for high visibility
+            grvResolutionDetailsCard.style.display = 'block';
+            grvResolutionTextPlaceholder.textContent = 'Your grievance has been escalated for further review by our senior team. We will update you shortly.';
+        } else { // inprogress
+            grvStatusBadge.textContent = 'In Progress';
+            grvStatusBadge.className = 'badge badge-info';
+        }
+
+        const grvAddInfoForm = document.getElementById('grvAddInfoForm');
+        if (grvAddInfoForm) {
+            grvAddInfoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Additional information submitted for grievance (Mock). The status will be updated.');
+                grvStatusBadge.textContent = 'In Progress';
+                grvStatusBadge.className = 'badge badge-info';
+                grvAddInfoSection.style.display = 'none';
+                grvResolutionDetailsCard.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>

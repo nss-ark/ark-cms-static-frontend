@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit New Rights Request - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dp_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li><a href="dp_consents.html"><span class="material-symbols-outlined">fact_check</span> My Consents</a></li>
+                    <li><a href="dp_requests.html" class="active"><span class="material-symbols-outlined">rule</span> My Rights Requests</a></li>
+                    <li><a href="dp_grievances.html"><span class="material-symbols-outlined">report_problem</span> My Grievances</a></li>
+                    <li><a href="dp_profile.html"><span class="material-symbols-outlined">account_circle</span> My Profile</a></li>
+                    <li><a href="dp_settings.html"><span class="material-symbols-outlined">settings</span> Settings</a></li>
+                    <li><a href="dp_notifications.html"><span class="material-symbols-outlined">notifications</span> Notifications</a></li>
+                </ul>
+                <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="dp_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Submit New Rights Request</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">DP</div>
+                        <span class="user-name-display ark-body-default">[DP Full Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="dp_profile.html">My Profile</a>
+                        <a href="dp_settings.html">Settings</a>
+                        <div class="divider"></div>
+                        <a href="dp_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="dp_requests.html" class="ark-link">My Rights Requests</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page">Submit New Request</li>
+                </ol>
+            </nav>
+
+            <div class="card">
+                <form id="submitRequestForm">
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label for="selectDF" class="ark-label">Select Data Fiduciary <span style="color: var(--ark-red-500);">*</span></label>
+                            <select id="selectDF" name="dataFiduciary" class="form-control" required>
+                                <option value="">-- Select Data Fiduciary --</option>
+                                <option value="df1">[Example Corp]</option>
+                                <option value="df2">[ABC Ltd]</option>
+                                <option value="df3">[Data Insights Ltd.]</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="requestType" class="ark-label">Select Request Type <span style="color: var(--ark-red-500);">*</span></label>
+                            <select id="requestType" name="requestType" class="form-control" required>
+                                <option value="">-- Select Request Type --</option>
+                                <option value="access">Access my data (Sec 11)</option>
+                                <option value="correction">Correct my data (Sec 12)</option>
+                                <option value="completion">Complete my data (Sec 12)</option>
+                                <option value="updating">Update my data (Sec 12)</option>
+                                <option value="erasure">Erase my data (Sec 12)</option>
+                                <option value="nomination_update">Update Nomination (Sec 14)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="requestDetails" class="ark-label">Request Details <span style="color: var(--ark-red-500);">*</span></label>
+                            <textarea id="requestDetails" name="requestDetails" class="form-control" rows="5" placeholder="Specify the data you want to access, describe the correction needed and provide verifiable details, or specify the data to be erased and reason (optional)..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="supportingDocs" class="ark-label">Attach Supporting Documents (Optional)</label>
+                            <input type="file" id="supportingDocs" name="supportingDocs" class="form-control">
+                            <p class="helper-text">E.g., for correction requests, provide evidence.</p>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-between align-center">
+                        <a href="dp_requests.html" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Data Principal User");
+        const submitRequestForm = document.getElementById('submitRequestForm');
+        if (submitRequestForm) {
+            submitRequestForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Rights request submitted (Mock). You will be redirected.');
+                window.location.href = 'dp_requests.html';
+            });
+        }
+    </script>
+</body>
+</html>

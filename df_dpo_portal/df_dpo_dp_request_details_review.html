@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Details Review - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">DP Request Oversight</span>
+                <ul>
+                    <li><a href="df_dpo_dp_requests_oversight.html" class="active"><span class="material-symbols-outlined">manage_search</span> DP Requests</a></li>
+                    <li><a href="df_dpo_grievances_oversight.html"><span class="material-symbols-outlined">hearing</span> Grievances</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Request Details Review - <span id="dpoReqDetailIDDisplay">REQ_00123</span></h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="df_dpo_dp_requests_oversight.html" class="ark-link">DP Request Oversight</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page" id="dpoBreadcrumbReqDetailID">Request REQ_00123</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request Summary</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>Data Principal:</strong> dp_user_001@ark.com (<a href="#" class="btn-link">View DP Profile - Mock</a>)</p>
+                    <p><strong>Request Type:</strong> Access (Sec 11)</p>
+                    <p><strong>Submitted Date:</strong> [YYYY-MM-DD HH:MM]</p>
+                    <p><strong>Current Status:</strong> <span class="badge badge-info" id="dpoReqDetailStatusBadge">In Progress</span></p>
+                    <p><strong>Assigned To:</strong> <span id="dpoReqDetailAssignee">[Operator One]</span></p>
+                    <p><strong>SLA Status:</strong> <span class="badge badge-success" id="dpoReqDetailSlaStatus">Within SLA</span> ([X] days remaining)</p>
+                     <p id="dpoReqResolvedOnP" style="display:none;"><strong>Resolved/Closed On:</strong> <span id="dpoReqResolvedOnDate">[YYYY-MM-DD HH:MM]</span></p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request Details from DP</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default">"I would like to request a summary of all personal data you process about me, and a list of any third parties with whom this data has been shared."</p>
+                    <p class="ark-body-small mt-2"><em>No attachments.</em></p>
+                </div>
+            </div>
+            
+            <div class="card mb-4" id="dpoReqResolutionDetailsCard" style="display:none;">
+                <div class="card-header">
+                    <h2 class="ark-h3">Resolution/Rejection Details</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default" id="dpoReqResolutionTextPlaceholder">[Placeholder for resolution details by Operator/Admin]</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="ark-h3">Request History (Audit Trail)</h2>
+                </div>
+                <div class="card-content">
+                    <ul class="ark-body-default" style="list-style: none; padding: 0;">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>DP Submitted Request</strong> - [YYYY-MM-DD HH:MM]
+                        </li>
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid var(--ark-gray-200);">
+                            <strong>Assigned to [Operator One]</strong> by [DF Admin Name] - [YYYY-MM-DD HH:MM]
+                        </li>
+                        <li style="padding: var(--space-sm) 0;">
+                            <strong>Status changed to 'In Progress'</strong> by [Operator One] - [YYYY-MM-DD HH:MM]
+                        </li>
+                    </ul>
+                </div>
+                 <div class="card-footer text-right">
+                    <button class="btn btn-secondary" onclick="alert('DPO comments for this request added/updated (Mock)')"><span class="material-symbols-outlined">rate_review</span> Add/View DPO Comments</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+        const dpoReqIdFromUrl = new URLSearchParams(window.location.search).get('id') || 'REQ_00123';
+        document.getElementById('dpoReqDetailIDDisplay').textContent = dpoReqIdFromUrl;
+        document.getElementById('dpoBreadcrumbReqDetailID').textContent = `Request ${dpoReqIdFromUrl}`;
+        
+        // Mock data based on ID or passed status for review
+        const dpoReqStatus = new URLSearchParams(window.location.search).get('status') || 'inprogress'; 
+        const dpoStatusBadge = document.getElementById('dpoReqDetailStatusBadge');
+        const dpoResolvedOnP = document.getElementById('dpoReqResolvedOnP');
+        const dpoResolutionCard = document.getElementById('dpoReqResolutionDetailsCard');
+
+        if (dpoReqStatus === 'resolved' || dpoReqStatus === 'rejected' || dpoReqStatus === 'closed') {
+            dpoResolvedOnP.style.display = 'block';
+            dpoResolutionCard.style.display = 'block';
+            document.getElementById('dpoReqResolvedOnDate').textContent = '[YYYY-MM-DD - Actual Date]';
+            if (dpoReqStatus === 'resolved') {
+                dpoStatusBadge.textContent = 'Resolved';
+                dpoStatusBadge.className = 'badge badge-success';
+                document.getElementById('dpoReqResolutionTextPlaceholder').textContent = 'Request fulfilled. Details sent to DP.';
+            } else if (dpoReqStatus === 'rejected') {
+                dpoStatusBadge.textContent = 'Rejected';
+                dpoStatusBadge.className = 'badge badge-danger';
+                document.getElementById('dpoReqResolutionTextPlaceholder').textContent = 'Request rejected due to [Valid Reason].';
+            } else { // closed
+                 dpoStatusBadge.textContent = 'Closed';
+                dpoStatusBadge.className = 'badge badge-neutral';
+                 document.getElementById('dpoReqResolutionTextPlaceholder').textContent = 'Request closed after resolution.';
+            }
+        } else if (dpoReqStatus === 'awaitingdpinfo') {
+            dpoStatusBadge.textContent = 'Awaiting DP Info';
+            dpoStatusBadge.className = 'badge badge-warning';
+        } else { // inprogress or submitted
+            dpoStatusBadge.textContent = dpoReqStatus.charAt(0).toUpperCase() + dpoReqStatus.slice(1);
+            dpoStatusBadge.className = 'badge badge-info';
+        }
+    </script>
+</body>
+</html>

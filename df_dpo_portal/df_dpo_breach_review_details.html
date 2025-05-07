@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Breach Notification Details - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <!-- ... other nav sections ... -->
+                <span class="nav-section-title">Breach Management</span>
+                <ul>
+                     <li><a href="df_dpo_breach_review.html" class="active"><span class="material-symbols-outlined">notification_important</span> Breach Review</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Review Breach Notification - <span id="breachReviewIdDisplay">BRCH_2024_001</span></h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="ark-body-small" style="display: flex; list-style: none; padding: 0;">
+                    <li><a href="df_dpo_breach_review.html" class="ark-link">Breach Notification Review</a></li>
+                    <li class="ark-body-small" style="margin: 0 var(--space-xs); color: var(--ark-gray-500);">></li>
+                    <li class="ark-body-small" aria-current="page" id="breadcrumbBreachReviewId">Review BRCH_2024_001</li>
+                </ol>
+            </nav>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Section 1: Breach Details</h2>
+                </div>
+                <div class="card-content">
+                    <p><strong>Breach Reference ID:</strong> <span id="detailBreachRefId">BRCH_2024_001</span></p>
+                    <p><strong>Date of Breach Discovery:</strong> <span id="detailBreachDiscoveryDate">[YYYY-MM-DD]</span></p>
+                    <p><strong>Nature of Breach:</strong> <span id="detailBreachNature">[Unauthorized access to customer database due to software vulnerability.]</span></p>
+                    <p><strong>Categories of Data Affected:</strong> <span id="detailBreachDataCategories">[Names, Email Addresses, Phone Numbers, Order History.]</span></p>
+                    <p><strong>Approximate Number of Data Principals Affected:</strong> <span id="detailBreachAffectedDps">~1500</span></p>
+                    <p><strong>Likely Consequences:</strong> <span id="detailBreachConsequences">[Potential for identity theft, phishing attacks, unsolicited marketing.]</span></p>
+                    <p><strong>Measures Taken/Proposed:</strong> <span id="detailBreachMeasures">[Vulnerability patched, affected servers isolated, mandatory password reset for affected users initiated, credit monitoring offered.]</span></p>
+                    <p><strong>Contact Details for More Information:</strong> <span id="detailBreachContact">[dpo@fiduciary.com, 1-800-BREACH-INFO]</span></p>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Section 2: Affected Data Principals</h2>
+                </div>
+                <div class="card-content">
+                    <p class="ark-body-default">Summary: <span id="detailAffectedDpSummary">[List of 1500 specific user IDs identified via query from sales database for period X to Y.]</span></p>
+                    <a href="#" class="btn btn-link btn-sm">(View Full List/Query Criteria - Mock)</a>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2 class="ark-h3">Section 3: Notification Preview</h2>
+                </div>
+                <div class="card-content" style="border: 1px solid var(--ark-gray-200); padding: var(--space-md); background-color: var(--ark-gray-25);">
+                    <p><strong>Subject:</strong> Important: Personal Data Breach Notification from [Data Fiduciary Name]</p>
+                    <p>Dear Data Principal,</p>
+                    <p>We are writing to inform you about a personal data breach that occurred at [Data Fiduciary Name] on/around [YYYY-MM-DD - from Discovery Date].</p>
+                    <p><strong>Nature of Breach:</strong> [Unauthorized access to customer database due to software vulnerability.]</p>
+                    <p><strong>Data Affected:</strong> [Names, Email Addresses, Phone Numbers, Order History.]</p>
+                    <!-- ... other preview fields matching form ... -->
+                    <p>Sincerely,<br>[Data Fiduciary Name]</p>
+                </div>
+            </div>
+
+            <div class="card" id="dpoReviewSection">
+                <form id="dpoBreachReviewForm">
+                    <div class="card-header">
+                        <h2 class="ark-h3">Section 4: DPO Review & Action</h2>
+                    </div>
+                    <div class="card-content">
+                         <div class="form-group">
+                            <label for="dpoReviewComments" class="ark-label">Review Comments (Required for Rejection/Changes):</label>
+                            <textarea id="dpoReviewComments" name="dpoReviewComments" class="form-control" rows="4" placeholder="Provide comments on accuracy, completeness, or suggest changes..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="ark-label">Decision <span style="color: var(--ark-red-500);">*</span></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="dpoDecision" id="dpoApprove" value="approve" required>
+                                <label class="form-check-label" for="dpoApprove">Approve for Notification</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="dpoDecision" id="dpoReject" value="reject">
+                                <label class="form-check-label" for="dpoReject">Reject (Return to Admin with comments)</label>
+                            </div>
+                             <div class="form-check">
+                                <input class="form-check-input" type="radio" name="dpoDecision" id="dpoApproveWithChanges" value="approve_changes">
+                                <label class="form-check-label" for="dpoApproveWithChanges">Approve with Minor Changes (Detail changes in comments)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-right">
+                         <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </div>
+                </form>
+            </div>
+             <div class="card" id="readOnlyReview" style="display:none;">
+                <div class="card-header"><h2 class="ark-h3">DPO Review (Read-Only)</h2></div>
+                <div class="card-content">
+                    <p><strong>Decision:</strong> <span id="roDecision" class="badge"></span></p>
+                    <p><strong>Comments:</strong> <span id="roComments"></span></p>
+                    <p><strong>Reviewed On:</strong> <span id="roReviewedOn"></span></p>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+        const breachReviewIdFromUrl = new URLSearchParams(window.location.search).get('id') || 'BRCH_2024_001';
+        document.getElementById('breachReviewIdDisplay').textContent = breachReviewIdFromUrl;
+        document.getElementById('breadcrumbBreachReviewId').textContent = `Review ${breachReviewIdFromUrl}`;
+        document.getElementById('detailBreachRefId').textContent = breachReviewIdFromUrl;
+
+        const dpoReviewSection = document.getElementById('dpoReviewSection');
+        const readOnlyReviewSection = document.getElementById('readOnlyReview');
+
+        // Mock behavior for already reviewed items
+        if (breachReviewIdFromUrl === 'BRCH_2023_015' || breachReviewIdFromUrl === 'BRCH_2023_010') {
+            dpoReviewSection.style.display = 'none';
+            readOnlyReviewSection.style.display = 'block';
+            if (breachReviewIdFromUrl === 'BRCH_2023_015') {
+                 document.getElementById('roDecision').textContent = 'Approved & Sent';
+                 document.getElementById('roDecision').className = 'badge badge-success';
+                 document.getElementById('roComments').textContent = 'Notification content is clear and comprehensive. Approved for sending.';
+            } else {
+                 document.getElementById('roDecision').textContent = 'Rejected by DPO';
+                 document.getElementById('roDecision').className = 'badge badge-danger';
+                 document.getElementById('roComments').textContent = 'The scope of affected DPs needs to be narrowed. Please re-evaluate query criteria.';
+            }
+            document.getElementById('roReviewedOn').textContent = '[YYYY-MM-DD Prev Review]';
+        }
+
+
+        document.getElementById('dpoBreachReviewForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const decision = document.querySelector('input[name="dpoDecision"]:checked');
+            if (!decision) {
+                alert('Please select a decision.');
+                return;
+            }
+            const comments = document.getElementById('dpoReviewComments').value;
+            if ((decision.value === 'reject' || decision.value === 'approve_changes') && !comments.trim()) {
+                 alert('Comments are required for rejection or approval with changes.');
+                return;
+            }
+            alert(`Breach notification review submitted with decision: ${decision.value.replace('_', ' ')}. (Mock)`);
+            // In a real app, update status and redirect or update UI
+            dpoReviewSection.style.display = 'none';
+            readOnlyReviewSection.style.display = 'block';
+            document.getElementById('roDecision').textContent = decision.value.replace('_', ' ').toUpperCase();
+            document.getElementById('roDecision').className = decision.value === 'reject' ? 'badge badge-danger' : 'badge badge-success';
+            document.getElementById('roComments').textContent = comments || 'N/A';
+            document.getElementById('roReviewedOn').textContent = new Date().toLocaleDateString();
+
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name]</span>
+                <ul>
+                    <li><a href="df_admin_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Consent Management</span>
+                <ul>
+                    <li><a href="df_admin_notices.html"><span class="material-symbols-outlined">feed</span> Notices</a></li>
+                    <li><a href="df_admin_purposes.html"><span class="material-symbols-outlined">target</span> Purposes</a></li>
+                    <li><a href="df_admin_categories.html"><span class="material-symbols-outlined">category</span> Data Categories</a></li>
+                    <li><a href="df_admin_consent_records.html"><span class="material-symbols-outlined">folder_shared</span> Consent Records</a></li>
+                </ul>
+                <span class="nav-section-title">Data Principal Mgt.</span>
+                 <ul>
+                    <li><a href="df_admin_dp_requests.html"><span class="material-symbols-outlined">rule_settings</span> DP Requests</a></li>
+                    <li><a href="df_admin_grievances.html"><span class="material-symbols-outlined">support_agent</span> Grievances</a></li>
+                    <li><a href="df_admin_data_principals.html"><span class="material-symbols-outlined">group</span> Data Principals</a></li>
+                </ul>
+                <span class="nav-section-title">Organization Settings</span>
+                <ul>
+                    <li><a href="df_admin_profile.html"><span class="material-symbols-outlined">business</span> DF Profile</a></li>
+                    <li><a href="df_admin_user_management.html" class="active"><span class="material-symbols-outlined">manage_accounts</span> User Management</a></li>
+                    <li><a href="df_admin_processors.html"><span class="material-symbols-outlined">hub</span> Data Processors</a></li>
+                    <li><a href="df_admin_activities.html"><span class="material-symbols-outlined">schema</span> Processing Activities</a></li>
+                    <li><a href="df_admin_exemptions.html"><span class="material-symbols-outlined">gavel</span> Exemptions</a></li>
+                </ul>
+                 <span class="nav-section-title">Integrations</span>
+                <ul>
+                    <li><a href="df_admin_api_keys.html"><span class="material-symbols-outlined">key</span> API Keys</a></li>
+                    <li><a href="#"><span class="material-symbols-outlined">webhook</span> Webhooks (Future)</a></li>
+                    <li><a href="df_admin_cookie_banner_config.html"><span class="material-symbols-outlined">cookie</span> Cookie Banner</a></li>
+                </ul>
+                <span class="nav-section-title">Reporting & Audit</span>
+                <ul>
+                    <li><a href="df_admin_reports.html"><span class="material-symbols-outlined">assessment</span> Reports</a></li>
+                    <li><a href="df_admin_audit_logs.html"><span class="material-symbols-outlined">policy</span> Audit Logs</a></li>
+                </ul>
+                 <span class="nav-section-title">Help</span>
+                <ul>
+                    <li><a href="#"><span class="material-symbols-outlined">help_outline</span> Help/Support</a></li>
+                </ul>
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_admin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Manage Data Fiduciary Users</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">AD</div>
+                        <span class="user-name-display ark-body-default">[DF Admin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="df_admin_profile.html">My Profile</a>
+                        <a href="df_admin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar d-flex justify-between align-center">
+                <div class="user-limits-summary ark-body-default">
+                    Admins: <span id="adminCount">1</span>/<span id="adminLimit">1</span> |
+                    DPOs: <span id="dpoCount">1</span>/<span id="dpoLimit">1</span> |
+                    Operators: <span id="operatorCount">2</span>/<span id="operatorLimit">5</span>
+                </div>
+                <button class="btn btn-primary" data-modal-target="addUserModal" id="addNewUserBtn">
+                    <span class="material-symbols-outlined">person_add</span> Add New User
+                </button>
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Last Login</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[DF Admin Name]</td>
+                            <td>df_admin@fiduciary.com</td>
+                            <td><span class="badge badge-info">Admin</span></td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="editUserModal" data-user-name="[DF Admin Name]" data-user-email="df_admin@fiduciary.com" data-user-role="Admin" data-user-status="Active"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <!-- Admin cannot deactivate self usually -->
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[DF DPO Name]</td>
+                            <td>df_dpo@fiduciary.com</td>
+                            <td><span class="badge badge-neutral">DPO</span></td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="editUserModal" data-user-name="[DF DPO Name]" data-user-email="df_dpo@fiduciary.com" data-user-role="DPO" data-user-status="Active"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="resetPasswordModal" data-user-email="df_dpo@fiduciary.com"><span class="material-symbols-outlined icon-only">lock_reset</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="toggleUserStatusModal" data-user-email="df_dpo@fiduciary.com" data-current-status="Active"><span class="material-symbols-outlined icon-only">toggle_off</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[Operator One Name]</td>
+                            <td>operator1@fiduciary.com</td>
+                            <td><span class="badge badge-neutral">Operator</span></td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="editUserModal" data-user-name="[Operator One Name]" data-user-email="operator1@fiduciary.com" data-user-role="Operator" data-user-status="Active"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="resetPasswordModal" data-user-email="operator1@fiduciary.com"><span class="material-symbols-outlined icon-only">lock_reset</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="toggleUserStatusModal" data-user-email="operator1@fiduciary.com" data-current-status="Active"><span class="material-symbols-outlined icon-only">toggle_off</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[Operator Two Name]</td>
+                            <td>operator2@fiduciary.com</td>
+                            <td><span class="badge badge-neutral">Operator</span></td>
+                            <td><span class="badge badge-danger">Inactive</span></td>
+                            <td>[YYYY-MM-DD HH:MM]</td>
+                             <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="editUserModal" data-user-name="[Operator Two Name]" data-user-email="operator2@fiduciary.com" data-user-role="Operator" data-user-status="Inactive"><span class="material-symbols-outlined icon-only">edit</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="resetPasswordModal" data-user-email="operator2@fiduciary.com"><span class="material-symbols-outlined icon-only">lock_reset</span></button>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="toggleUserStatusModal" data-user-email="operator2@fiduciary.com" data-current-status="Inactive"><span class="material-symbols-outlined icon-only">toggle_on</span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+             <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of 1</span>
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add/Edit User Modal -->
+    <div class="modal-overlay" id="addUserModal">
+        <div class="modal-container" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3" id="userModalTitle">Add New User</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="userForm">
+                <input type="hidden" id="editUserId" name="userId">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="userFullName" class="ark-label">Full Name <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="text" id="userFullName" name="userFullName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail" class="ark-label">Work Email Address <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="email" id="userEmail" name="userEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole" class="ark-label">Role <span style="color: var(--ark-red-500);">*</span></label>
+                        <select id="userRole" name="userRole" class="form-control" required>
+                            <option value="Operator">Operator</option>
+                            <option value="DPO">DPO</option>
+                            <!-- Admin role typically not assignable here -->
+                        </select>
+                    </div>
+                     <div class="form-group" id="userStatusGroup" style="display:none;">
+                        <label for="userStatus" class="ark-label">Status <span style="color: var(--ark-red-500);">*</span></label>
+                        <select id="userStatus" name="userStatus" class="form-control">
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveUserBtn">Save User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reset Password Confirmation Modal -->
+    <div class="modal-overlay" id="resetPasswordModal">
+        <div class="modal-container" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Confirm Password Reset</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default">Are you sure you want to send password reset instructions to <strong id="resetPasswordUserEmail"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="alert('Password reset instructions sent (Mock).'); this.closest('.modal-overlay').classList.remove('active');">Confirm Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deactivate/Activate Confirmation Modal -->
+    <div class="modal-overlay" id="toggleUserStatusModal">
+        <div class="modal-container" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3" id="toggleStatusModalTitle">Confirm Deactivation</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <div class="modal-body">
+                <p class="ark-body-default" id="toggleStatusModalText">Are you sure you want to deactivate the user <strong id="toggleStatusUserEmail"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmToggleStatusBtn" onclick="alert('User status changed (Mock).'); this.closest('.modal-overlay').classList.remove('active');">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Admin User");
+
+        // User Management Modal Logic
+        const addUserModal = document.getElementById('addUserModal');
+        const userForm = document.getElementById('userForm');
+        const userModalTitle = document.getElementById('userModalTitle');
+        const userStatusGroup = document.getElementById('userStatusGroup');
+        const editUserId = document.getElementById('editUserId');
+        const userFullName = document.getElementById('userFullName');
+        const userEmail = document.getElementById('userEmail');
+        const userRole = document.getElementById('userRole');
+        const userStatus = document.getElementById('userStatus');
+        const saveUserBtn = document.getElementById('saveUserBtn');
+
+        document.querySelectorAll('[data-modal-target="addUserModal"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                userModalTitle.textContent = 'Add New User';
+                userForm.reset();
+                editUserId.value = '';
+                userStatusGroup.style.display = 'none'; // Not for new users initially
+                userEmail.disabled = false;
+                saveUserBtn.textContent = 'Save User';
+            });
+        });
+        
+        document.querySelectorAll('[data-modal-target="editUserModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const targetButton = e.currentTarget;
+                userModalTitle.textContent = `Edit User ${targetButton.dataset.userName}`;
+                userForm.reset();
+                editUserId.value = targetButton.dataset.userEmail; // Using email as mock ID
+                userFullName.value = targetButton.dataset.userName;
+                userEmail.value = targetButton.dataset.userEmail;
+                userEmail.disabled = true; // Email usually not editable
+                userRole.value = targetButton.dataset.userRole;
+                userStatus.value = targetButton.dataset.userStatus;
+                userStatusGroup.style.display = 'block';
+                saveUserBtn.textContent = 'Update User';
+            });
+        });
+
+        userForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (editUserId.value) {
+                alert(`User ${userFullName.value} updated (Mock).`);
+            } else {
+                alert(`User ${userFullName.value} added (Mock). An invite will be sent.`);
+            }
+            addUserModal.classList.remove('active');
+        });
+
+        // Reset Password Modal
+         document.querySelectorAll('[data-modal-target="resetPasswordModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.getElementById('resetPasswordUserEmail').textContent = e.currentTarget.dataset.userEmail;
+            });
+        });
+
+        // Toggle Status Modal
+        document.querySelectorAll('[data-modal-target="toggleUserStatusModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const currentStatus = e.currentTarget.dataset.currentStatus;
+                const action = currentStatus === 'Active' ? 'deactivate' : 'activate';
+                const btnClass = currentStatus === 'Active' ? 'btn-danger' : 'btn-primary';
+                document.getElementById('toggleStatusModalTitle').textContent = `Confirm ${action.charAt(0).toUpperCase() + action.slice(1)}`;
+                document.getElementById('toggleStatusModalText').innerHTML = `Are you sure you want to ${action} the user <strong id="toggleStatusUserEmail">${e.currentTarget.dataset.userEmail}</strong>?`;
+                const confirmBtn = document.getElementById('confirmToggleStatusBtn');
+                confirmBtn.textContent = `Confirm ${action.charAt(0).toUpperCase() + action.slice(1)}`;
+                confirmBtn.className = `btn ${btnClass}`;
+
+            });
+        });
+
+    </script>
+</body>
+</html>

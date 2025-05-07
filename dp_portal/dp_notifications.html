@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="dp_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                    <li><a href="dp_consents.html"><span class="material-symbols-outlined">fact_check</span> My Consents</a></li>
+                    <li><a href="dp_requests.html"><span class="material-symbols-outlined">rule</span> My Rights Requests</a></li>
+                    <li><a href="dp_grievances.html"><span class="material-symbols-outlined">report_problem</span> My Grievances</a></li>
+                    <li><a href="dp_profile.html"><span class="material-symbols-outlined">account_circle</span> My Profile</a></li>
+                    <li><a href="dp_settings.html"><span class="material-symbols-outlined">settings</span> Settings</a></li>
+                    <li><a href="dp_notifications.html" class="active"><span class="material-symbols-outlined">notifications</span> Notifications</a></li>
+                </ul>
+                <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="dp_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Notifications</h1>
+                <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">DP</div>
+                        <span class="user-name-display ark-body-default">[DP Full Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="dp_profile.html">My Profile</a>
+                        <a href="dp_settings.html">Settings</a>
+                        <div class="divider"></div>
+                        <a href="dp_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar d-flex justify-between align-center">
+                <div class="filters">
+                    <label for="notificationFilter" class="ark-label mr-2">Show:</label>
+                    <select id="notificationFilter" class="form-control" style="display: inline-block; width: auto;">
+                        <option value="all">All</option>
+                        <option value="unread">Unread</option>
+                    </select>
+                </div>
+                <button class="btn btn-subtle" onclick="alert('All notifications marked as read (Mock)')">
+                    <span class="material-symbols-outlined">mark_chat_read</span> Mark All as Read
+                </button>
+            </div>
+
+            <div class="card">
+                <ul class="notification-list" style="list-style: none; padding: 0;">
+                    <li class="notification-item unread" style="display: flex; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--ark-gray-200); cursor:pointer;" onclick="this.classList.remove('unread'); alert('Navigating to consent details (Mock)')">
+                        <span class="material-symbols-outlined" style="color: var(--ark-blue-500); margin-right: var(--space-md); font-size: 24px;">fact_check</span>
+                        <div style="flex-grow: 1;">
+                            <strong class="ark-body-default">Consent Confirmed</strong>
+                            <p class="ark-body-small mb-0">Your consent for 'Marketing Emails' with [Example Corp] has been successfully recorded.</p>
+                        </div>
+                        <span class="ark-body-small" style="color: var(--ark-gray-600); white-space: nowrap;">[Date Time]</span>
+                    </li>
+                    <li class="notification-item unread" style="display: flex; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--ark-gray-200); cursor:pointer;" onclick="this.classList.remove('unread'); alert('Navigating to request details (Mock)')">
+                        <span class="material-symbols-outlined" style="color: var(--ark-yellow-500); margin-right: var(--space-md); font-size: 24px;">warning</span>
+                        <div style="flex-grow: 1;">
+                            <strong class="ark-body-default">Action Required: Request Update</strong>
+                            <p class="ark-body-small mb-0">[ABC Ltd] has requested additional information for your Access Request REQ_00125.</p>
+                        </div>
+                        <span class="ark-body-small" style="color: var(--ark-gray-600); white-space: nowrap;">[Date Time]</span>
+                    </li>
+                     <li class="notification-item" style="display: flex; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--ark-gray-200); cursor:pointer;" onclick="alert('Navigating to grievance details (Mock)')">
+                        <span class="material-symbols-outlined" style="color: var(--ark-green-500); margin-right: var(--space-md); font-size: 24px;">task_alt</span>
+                        <div style="flex-grow: 1;">
+                            <strong class="ark-body-default">Grievance Resolved</strong>
+                            <p class="ark-body-small mb-0">Your grievance GRV_00056 against [Data Insights Ltd.] has been resolved.</p>
+                        </div>
+                        <span class="ark-body-small" style="color: var(--ark-gray-600); white-space: nowrap;">[Date Time]</span>
+                    </li>
+                     <li class="notification-item unread" style="display: flex; align-items: center; padding: var(--space-md) 0; border-bottom: 1px solid var(--ark-gray-200); cursor:pointer;" onclick="this.classList.remove('unread'); alert('Displaying breach details (Mock)')">
+                        <span class="material-symbols-outlined" style="color: var(--ark-red-500); margin-right: var(--space-md); font-size: 24px;">security</span>
+                        <div style="flex-grow: 1;">
+                            <strong class="ark-body-default">Personal Data Breach Notification</strong>
+                            <p class="ark-body-small mb-0">[Services Provider Co.] has reported a personal data breach that may affect you.</p>
+                        </div>
+                        <span class="ark-body-small" style="color: var(--ark-gray-600); white-space: nowrap;">[Date Time]</span>
+                    </li>
+                    <!-- More notification items -->
+                </ul>
+                 <p class="text-center ark-body-default mt-4" id="noNotificationsMsg" style="display:none;">You have no new notifications.</p>
+            </div>
+        </main>
+    </div>
+    <style>
+        .notification-item.unread {
+            background-color: var(--ark-blue-50); /* Subtle highlight for unread */
+            border-left: 3px solid var(--ark-blue-500);
+            padding-left: calc(var(--space-md) - 3px) !important;
+        }
+         .notification-item.unread strong {
+            font-weight: 700;
+        }
+    </style>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Data Principal User");
+
+        const notificationFilter = document.getElementById('notificationFilter');
+        const notificationList = document.querySelector('.notification-list');
+        const noNotificationsMsg = document.getElementById('noNotificationsMsg');
+
+        function filterNotifications() {
+            const filterValue = notificationFilter.value;
+            let hasVisibleItems = false;
+            notificationList.querySelectorAll('.notification-item').forEach(item => {
+                let show = false;
+                if (filterValue === 'all') {
+                    show = true;
+                } else if (filterValue === 'unread' && item.classList.contains('unread')) {
+                    show = true;
+                }
+                item.style.display = show ? 'flex' : 'none';
+                if (show) hasVisibleItems = true;
+            });
+            noNotificationsMsg.style.display = hasVisibleItems ? 'none' : 'block';
+        }
+
+        notificationFilter.addEventListener('change', filterNotifications);
+        filterNotifications(); // Initial filter
+    </script>
+</body>
+</html>

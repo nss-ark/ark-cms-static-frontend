@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievances Management - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name]</span>
+                <ul>
+                    <li><a href="df_admin_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Consent Management</span>
+                <!-- ... -->
+                <span class="nav-section-title">Data Principal Mgt.</span>
+                 <ul>
+                    <li><a href="df_admin_dp_requests.html"><span class="material-symbols-outlined">rule_settings</span> DP Requests</a></li>
+                    <li><a href="df_admin_grievances.html" class="active"><span class="material-symbols-outlined">support_agent</span> Grievances</a></li>
+                    <li><a href="df_admin_data_principals.html"><span class="material-symbols-outlined">group</span> Data Principals</a></li>
+                </ul>
+                <!-- ... other nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_admin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Grievances Management</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">AD</div>
+                        <span class="user-name-display ark-body-default">[DF Admin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="df_admin_profile.html">My Profile</a>
+                        <a href="df_admin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="card mb-4">
+                <h3 class="ark-h3">Summary Metrics</h3>
+                <div class="d-flex" style="gap: var(--space-lg); margin-top: var(--space-sm);">
+                    <p>Total Open: <strong id="totalOpenGrievances">3</strong></p>
+                    <p>Within SLA: <strong id="withinSlaGrievances" style="color: var(--ark-green-500);">1</strong></p>
+                    <p>Approaching SLA: <strong id="approachingSlaGrievances" style="color: var(--ark-yellow-500);">1</strong></p>
+                    <p>Overdue: <strong id="overdueSlaGrievances" style="color: var(--ark-red-500);">1</strong></p>
+                </div>
+            </div>
+
+            <div class="table-toolbar card mb-4">
+                <form id="filterGrievancesForm" class="d-flex flex-wrap align-center" style="gap: var(--space-md);">
+                    <div class="form-group">
+                        <label for="searchDpIdGrievances" class="ark-label">DP Identifier:</label>
+                        <input type="text" id="searchDpIdGrievances" class="form-control" placeholder="Search DP">
+                    </div>
+                     <div class="form-group">
+                        <label for="filterGrievanceStatus" class="ark-label">Status:</label>
+                        <select id="filterGrievanceStatus" class="form-control">
+                            <option value="">All Statuses</option>
+                            <option value="submitted">Submitted</option>
+                            <option value="inprogress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="escalated">Escalated</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterGrievanceAssignee" class="ark-label">Assignee:</label>
+                        <select id="filterGrievanceAssignee" class="form-control">
+                            <option value="">All Assignees</option>
+                            <option value="op1">[Operator One]</option>
+                            <option value="dpo1">[DF DPO Name]</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterGrievanceSlaStatus" class="ark-label">SLA Status:</label>
+                        <select id="filterGrievanceSlaStatus" class="form-control">
+                            <option value="">All</option>
+                            <option value="within">Within SLA</option>
+                            <option value="approaching">Approaching SLA</option>
+                            <option value="overdue">Overdue</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-end; margin-bottom: var(--space-md);">Apply Filters</button>
+                </form>
+            </div>
+
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Grievance ID</th>
+                            <th>Data Principal</th>
+                            <th>Submitted Date</th>
+                            <th>Status</th>
+                            <th>Assigned To</th>
+                            <th>SLA Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GRV_00056</td>
+                            <td>dp_user_001@ark.com</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-success">Resolved</span></td>
+                            <td>[DF DPO Name]</td>
+                            <td><span class="badge badge-success">Met SLA</span></td>
+                            <td class="table-actions">
+                                <a href="df_admin_grievance_details.html?id=GRV_00056" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span></a>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td>GRV_00057</td>
+                            <td>dp_user_002@ark.com</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-info">In Progress</span></td>
+                            <td>[Operator One]</td>
+                            <td><span class="badge badge-warning">Approaching SLA</span></td>
+                            <td class="table-actions">
+                                <a href="df_admin_grievance_details.html?id=GRV_00057" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span></a>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="assignGrievanceModal" data-grievance-id="GRV_00057"><span class="material-symbols-outlined icon-only">assignment_ind</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>GRV_00058</td>
+                            <td>dp_user_003@ark.com</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td><span class="badge badge-danger">Escalated</span></td>
+                            <td>[DF DPO Name]</td>
+                            <td><span class="badge badge-danger">Overdue</span></td>
+                            <td class="table-actions">
+                                <a href="df_admin_grievance_details.html?id=GRV_00058" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span></a>
+                                <button class="btn btn-sm btn-subtle" data-modal-target="assignGrievanceModal" data-grievance-id="GRV_00058"><span class="material-symbols-outlined icon-only">assignment_ind</span></button>
+                            </td>
+                        </tr>
+                        <!-- More placeholder rows -->
+                    </tbody>
+                </table>
+            </div>
+             <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of X</span>
+                <button class="btn btn-subtle"><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Assign Grievance Modal -->
+    <div class="modal-overlay" id="assignGrievanceModal">
+        <div class="modal-container" style="max-width: 450px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Assign Grievance <span id="assignGrievanceId"></span></h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="assignGrievanceFormModal">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="assignGrievanceToUser" class="ark-label">Assign To <span style="color: var(--ark-red-500);">*</span></label>
+                        <select id="assignGrievanceToUser" name="assignToUser" class="form-control" required>
+                            <option value="">-- Select User --</option>
+                            <option value="op1">[Operator One]</option>
+                            <option value="op2">[Operator Two]</option>
+                            <option value="dpo1">[DF DPO Name]</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Assign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF Admin Name");
+        document.getElementById('filterGrievancesForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('Filters applied to Grievances (Mock). Table would refresh.');
+        });
+
+        document.querySelectorAll('[data-modal-target="assignGrievanceModal"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.getElementById('assignGrievanceId').textContent = e.currentTarget.dataset.grievanceId;
+            });
+        });
+        document.getElementById('assignGrievanceFormModal')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert(`Grievance ${document.getElementById('assignGrievanceId').textContent} assigned to ${document.getElementById('assignGrievanceToUser').value} (Mock).`);
+            this.closest('.modal-overlay').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

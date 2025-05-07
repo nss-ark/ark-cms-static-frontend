@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Logs - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .log-viewer {
+            background-color: var(--ark-gray-900);
+            color: var(--ark-gray-200);
+            font-family: var(--font-monospace);
+            font-size: 13px;
+            padding: var(--space-md);
+            border-radius: var(--border-radius-md);
+            min-height: 400px;
+            max-height: 600px;
+            overflow: auto;
+            white-space: pre;
+        }
+        .log-viewer .log-line { margin-bottom: var(--space-xxs); }
+        .log-viewer .log-line.error { color: var(--ark-red-500); }
+        .log-viewer .log-line.warn { color: var(--ark-yellow-500); }
+        .log-viewer .log-line.info { color: var(--ark-blue-300); }
+        .log-viewer .log-line.debug { color: var(--ark-gray-500); }
+    </style>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                 <span class="nav-section-title">Ark CMS SuperAdmin</span>
+                <ul>
+                    <li><a href="superadmin_dashboard.html"><span class="material-symbols-outlined">space_dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Tenant Management</span>
+                <ul>
+                    <li><a href="superadmin_data_fiduciaries.html"><span class="material-symbols-outlined">domain</span> Data Fiduciaries</a></li>
+                </ul>
+                <span class="nav-section-title">Platform Management</span>
+                <ul>
+                    <li><a href="superadmin_users.html"><span class="material-symbols-outlined">shield_person</span> SuperAdmin Users</a></li>
+                    <li><a href="superadmin_global_settings.html"><span class="material-symbols-outlined">tune</span> Global Settings</a></li>
+                    <li><a href="superadmin_notification_templates.html"><span class="material-symbols-outlined">text_format</span> Notification Templates</a></li>
+                </ul>
+                <span class="nav-section-title">Monitoring</span>
+                <ul>
+                    <li><a href="superadmin_platform_health.html"><span class="material-symbols-outlined">monitor_heart</span> Platform Health</a></li>
+                    <li><a href="superadmin_platform_analytics.html"><span class="material-symbols-outlined">signal_cellular_alt</span> Platform Analytics</a></li>
+                    <li><a href="superadmin_system_logs.html" class="active"><span class="material-symbols-outlined">plagiarism</span> System Logs</a></li>
+                    <li><a href="superadmin_platform_audit_logs.html"><span class="material-symbols-outlined">admin_panel_settings</span> Platform Audit Logs</a></li>
+                </ul>
+                <!-- ... other SA nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="superadmin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">System Logs</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">SA</div>
+                        <span class="user-name-display ark-body-default">[SuperAdmin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="superadmin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar card mb-4">
+                <form id="filterSystemLogsForm" class="d-flex flex-wrap align-center" style="gap: var(--space-md);">
+                    <div class="form-group">
+                        <label for="sysLogDateFrom" class="ark-label">Date From:</label>
+                        <input type="datetime-local" id="sysLogDateFrom" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="sysLogDateTo" class="ark-label">Date To:</label>
+                        <input type="datetime-local" id="sysLogDateTo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="sysLogSource" class="ark-label">Log Source:</label>
+                        <select id="sysLogSource" class="form-control">
+                            <option value="">All Sources</option>
+                            <option value="api_server">API Server</option>
+                            <option value="web_server_dp">Web Server (DP Portal)</option>
+                            <option value="web_server_df">Web Server (DF Portal)</option>
+                            <option value="job_worker">Job Worker</option>
+                            <option value="database">Database</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sysLogLevel" class="ark-label">Log Level:</label>
+                        <select id="sysLogLevel" class="form-control">
+                            <option value="">All Levels</option>
+                            <option value="error">ERROR</option>
+                            <option value="warn">WARN</option>
+                            <option value="info">INFO</option>
+                            <option value="debug">DEBUG</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex-grow: 1;">
+                        <label for="sysLogSearch" class="ark-label">Search Term:</label>
+                        <input type="text" id="sysLogSearch" class="form-control" placeholder="Enter keyword, request ID, etc.">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="align-self: flex-end; margin-bottom: var(--space-md);">Apply Filters</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="card-header d-flex justify-between align-center">
+                    <h2 class="ark-h3">Log Viewer</h2>
+                    <div>
+                        <label for="realtimeToggle" class="ark-label mr-2">Real-time Streaming:</label>
+                        <input type="checkbox" id="realtimeToggle" class="form-check-input">
+                         <button class="btn btn-sm btn-secondary ml-2" onclick="alert('Filtered logs downloaded (Mock).')"><span class="material-symbols-outlined">download</span> Download Logs</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="log-viewer" id="logViewerContent">
+                        <div class="log-line info">[2024-05-01T10:00:00Z] INFO: API Server started on port 3000.</div>
+                        <div class="log-line debug">[2024-05-01T10:00:05Z] DEBUG: New connection from 192.168.1.10.</div>
+                        <div class="log-line info">[2024-05-01T10:01:15Z] INFO: [DF: tenant_001] User df_admin@fiduciary.com successfully logged in.</div>
+                        <div class="log-line warn">[2024-05-01T10:02:30Z] WARN: Database query took longer than expected: 1500ms - SELECT * FROM ConsentArtifacts WHERE ...</div>
+                        <div class="log-line error">[2024-05-01T10:03:00Z] ERROR: Failed to connect to Email Gateway: Connection refused. Retrying in 30s...</div>
+                        <div class="log-line info">[2024-05-01T10:03:05Z] INFO: [DP: dp_user@ark.com] Consent granted for purpose MKTG_EMAIL with DF tenant_001.</div>
+                        <!-- More log lines -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Super Admin");
+        document.getElementById('filterSystemLogsForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('System logs filtered (Mock). Log viewer would refresh.');
+            // Mock refresh:
+            const logViewer = document.getElementById('logViewerContent');
+            logViewer.innerHTML = '<div class="log-line info">[FILTERED] Mock log entry after applying filters...</div>';
+        });
+
+        const realtimeToggle = document.getElementById('realtimeToggle');
+        let realtimeInterval;
+        realtimeToggle?.addEventListener('change', function() {
+            const logViewer = document.getElementById('logViewerContent');
+            if (this.checked) {
+                alert('Real-time log streaming started (Mock).');
+                realtimeInterval = setInterval(() => {
+                    const newLine = document.createElement('div');
+                    newLine.classList.add('log-line');
+                    const levels = ['info', 'debug', 'warn', 'error'];
+                    const randomLevel = levels[Math.floor(Math.random() * levels.length)];
+                    newLine.classList.add(randomLevel);
+                    newLine.textContent = `[${new Date().toISOString()}] ${randomLevel.toUpperCase()}: Real-time mock log entry...`;
+                    logViewer.appendChild(newLine);
+                    logViewer.scrollTop = logViewer.scrollHeight; // Auto-scroll
+                }, 2000);
+            } else {
+                alert('Real-time log streaming stopped (Mock).');
+                clearInterval(realtimeInterval);
+            }
+        });
+    </script>
+</body>
+</html>

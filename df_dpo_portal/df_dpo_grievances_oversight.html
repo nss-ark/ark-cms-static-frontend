@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grievance Oversight - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                 <span class="nav-section-title">Compliance Monitoring</span>
+                <!-- ... -->
+                <span class="nav-section-title">DP Request Oversight</span>
+                <ul>
+                    <li><a href="df_dpo_dp_requests_oversight.html"><span class="material-symbols-outlined">manage_search</span> DP Requests</a></li>
+                    <li><a href="df_dpo_grievances_oversight.html" class="active"><span class="material-symbols-outlined">hearing</span> Grievances</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Grievance Oversight</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="tabs">
+                <div class="tab-list">
+                    <div class="tab-item active" data-tab="allGrievancesTab">All Grievances</div>
+                    <div class="tab-item" data-tab="assignedToMeTab">Assigned to Me <span class="badge badge-danger ml-1">1</span></div>
+                </div>
+                <div>
+                    <div class="tab-panel active" id="allGrievancesTab">
+                        <div class="card mb-4 mt-3"> <!-- Added mt-3 for spacing from tab list -->
+                            <h3 class="ark-h3">Summary Metrics (All)</h3>
+                            <div class="d-flex" style="gap: var(--space-lg); margin-top: var(--space-sm);">
+                                <p>Total Open: <strong id="totalOpenGrievancesAll">5</strong></p>
+                                <p>Within SLA: <strong id="withinSlaGrievancesAll" style="color: var(--ark-green-500);">2</strong></p>
+                                <p>Approaching SLA: <strong id="approachingSlaGrievancesAll" style="color: var(--ark-yellow-500);">2</strong></p>
+                                <p>Overdue: <strong id="overdueSlaGrievancesAll" style="color: var(--ark-red-500);">1</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="table-toolbar card mb-4">
+                            <form id="filterAllGrievancesForm" class="d-flex flex-wrap align-center" style="gap: var(--space-md);">
+                                <!-- Filters similar to DP Request Oversight -->
+                                <div class="form-group">
+                                    <label for="searchDpIdGrievAll" class="ark-label">DP Identifier:</label>
+                                    <input type="text" id="searchDpIdGrievAll" class="form-control" placeholder="Search DP">
+                                </div>
+                                <div class="form-group">
+                                    <label for="filterGrievStatusAll" class="ark-label">Status:</label>
+                                    <select id="filterGrievStatusAll" class="form-control">
+                                        <option value="">All</option>
+                                        <option value="submitted">Submitted</option>
+                                        <option value="inprogress">In Progress</option>
+                                        <option value="resolved">Resolved</option>
+                                        <option value="escalated">Escalated</option>
+                                    </select>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="filterGrievAssigneeAll" class="ark-label">Assignee:</label>
+                                    <select id="filterGrievAssigneeAll" class="form-control">
+                                        <option value="">All</option>
+                                        <option value="op1">[Operator One]</option>
+                                        <option value="me">[DF DPO Name (Me)]</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary" style="align-self: flex-end; margin-bottom: var(--space-md);">Apply Filters</button>
+                            </form>
+                        </div>
+
+                        <div class="card table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Grievance ID</th>
+                                        <th>Data Principal</th>
+                                        <th>Submitted Date</th>
+                                        <th>Status</th>
+                                        <th>Assigned To</th>
+                                        <th>SLA Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>GRV_00056</td>
+                                        <td>dp_user_001@ark.com</td>
+                                        <td>[YYYY-MM-DD]</td>
+                                        <td><span class="badge badge-success">Resolved</span></td>
+                                        <td>[DF DPO Name]</td>
+                                        <td><span class="badge badge-success">Met SLA</span></td>
+                                        <td class="table-actions">
+                                            <a href="df_dpo_grievance_details_review.html?id=GRV_00056" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span> Review</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>GRV_00057</td>
+                                        <td>dp_user_002@ark.com</td>
+                                        <td>[YYYY-MM-DD]</td>
+                                        <td><span class="badge badge-info">In Progress</span></td>
+                                        <td>[Operator One]</td>
+                                        <td><span class="badge badge-warning">Approaching SLA</span></td>
+                                        <td class="table-actions">
+                                            <a href="df_dpo_grievance_details_review.html?id=GRV_00057" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span> Review</a>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td>GRV_00058</td>
+                                        <td>dp_user_003@ark.com</td>
+                                        <td>[YYYY-MM-DD]</td>
+                                        <td><span class="badge badge-danger">Escalated</span></td>
+                                        <td>[DF DPO Name]</td> <!-- Assigned to DPO -->
+                                        <td><span class="badge badge-danger">Overdue</span></td>
+                                        <td class="table-actions">
+                                            <a href="df_dpo_grievance_processing.html?id=GRV_00058" class="btn btn-sm btn-primary"><span class="material-symbols-outlined icon-only">play_arrow</span> Process</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination mt-3">
+                            <button class="btn btn-subtle" disabled>Prev</button> Page 1 of X <button class="btn btn-subtle">Next</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-panel" id="assignedToMeTab">
+                        <h3 class="ark-h3 mb-3 mt-3">Grievances Assigned to Me</h3>
+                         <div class="card table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Grievance ID</th>
+                                        <th>Data Principal</th>
+                                        <th>Submitted Date</th>
+                                        <th>Status</th>
+                                        <th>SLA Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     <tr>
+                                        <td>GRV_00058</td>
+                                        <td>dp_user_003@ark.com</td>
+                                        <td>[YYYY-MM-DD]</td>
+                                        <td><span class="badge badge-danger">Escalated</span></td>
+                                        <td><span class="badge badge-danger">Overdue</span></td>
+                                        <td class="table-actions">
+                                            <a href="df_dpo_grievance_processing.html?id=GRV_00058" class="btn btn-sm btn-primary"><span class="material-symbols-outlined icon-only">play_arrow</span> Process</a>
+                                        </td>
+                                    </tr>
+                                    <!-- Only grievances assigned to the DPO -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination mt-3">
+                            <button class="btn btn-subtle" disabled>Prev</button> Page 1 of 1 <button class="btn btn-subtle" disabled>Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+        document.getElementById('filterAllGrievancesForm')?.addEventListener('submit', function(e){
+            e.preventDefault();
+            alert('All Grievances list filtered (Mock). Table would refresh.');
+        });
+    </script>
+</body>
+</html>

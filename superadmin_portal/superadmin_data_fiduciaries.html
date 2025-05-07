@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Data Fiduciaries - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+             <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                 <span class="nav-section-title">Ark CMS SuperAdmin</span>
+                <ul>
+                    <li><a href="superadmin_dashboard.html"><span class="material-symbols-outlined">space_dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Tenant Management</span>
+                <ul>
+                    <li><a href="superadmin_data_fiduciaries.html" class="active"><span class="material-symbols-outlined">domain</span> Data Fiduciaries</a></li>
+                </ul>
+                <span class="nav-section-title">Platform Management</span>
+                <ul>
+                    <li><a href="superadmin_users.html"><span class="material-symbols-outlined">shield_person</span> SuperAdmin Users</a></li>
+                    <li><a href="superadmin_global_settings.html"><span class="material-symbols-outlined">tune</span> Global Settings</a></li>
+                    <li><a href="superadmin_notification_templates.html"><span class="material-symbols-outlined">text_format</span> Notification Templates</a></li>
+                </ul>
+                 <!-- ... other SuperAdmin nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="superadmin_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Manage Data Fiduciaries</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">SA</div>
+                        <span class="user-name-display ark-body-default">[SuperAdmin Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="superadmin_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="table-toolbar">
+                <div class="form-group table-search">
+                    <input type="text" class="form-control" placeholder="Search Data Fiduciaries...">
+                </div>
+                <button class="btn btn-primary" data-modal-target="onboardDfModal">
+                    <span class="material-symbols-outlined">add_business</span> Onboard New Data Fiduciary
+                </button>
+            </div>
+
+            <div class="card table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>DF Name</th>
+                            <th>Tenant ID</th>
+                            <th>Status</th>
+                            <th>SDF Status</th>
+                            <th>Admin User Email</th>
+                            <th>Onboarded Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[Example Corp]</td>
+                            <td>[df_tenant_001]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>No</td>
+                            <td>admin@examplecorp.com</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="editDfConfigModal"><span class="material-symbols-outlined icon-only">tune</span></button>
+                                <button class="btn btn-sm btn-subtle" onclick="alert('Deactivating DF (Mock)')"><span class="material-symbols-outlined icon-only">toggle_off</span></button>
+                                <button class="btn btn-sm btn-subtle" onclick="alert('Viewing DF Details (Mock)')"><span class="material-symbols-outlined icon-only">visibility</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[ABC Ltd]</td>
+                            <td>[df_tenant_002]</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>Yes</td>
+                            <td>dpo.admin@abcltd.io</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="editDfConfigModal"><span class="material-symbols-outlined icon-only">tune</span></button>
+                                <button class="btn btn-sm btn-subtle" onclick="alert('Deactivating DF (Mock)')"><span class="material-symbols-outlined icon-only">toggle_off</span></button>
+                                <button class="btn btn-sm btn-subtle" onclick="alert('Viewing DF Details (Mock)')"><span class="material-symbols-outlined icon-only">visibility</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>[Pending Setup Co.]</td>
+                            <td>[df_tenant_003]</td>
+                            <td><span class="badge badge-warning">Pending Setup</span></td>
+                            <td>No</td>
+                            <td>contact@pendingsetup.com</td>
+                            <td>[YYYY-MM-DD]</td>
+                            <td class="table-actions">
+                                <button class="btn btn-sm btn-subtle" data-modal-target="editDfConfigModal"><span class="material-symbols-outlined icon-only">tune</span></button>
+                                <button class="btn btn-sm btn-subtle" onclick="alert('Activating DF (Mock)')"><span class="material-symbols-outlined icon-only">toggle_on</span></button>
+                                <button class="btn btn-sm btn-subtle" onclick="alert('Viewing DF Details (Mock)')"><span class="material-symbols-outlined icon-only">visibility</span></button>
+                            </td>
+                        </tr>
+                        <!-- More placeholder rows -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                <span class="ark-body-default">Page 1 of X</span>
+                <button class="btn btn-subtle"><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Onboard DF Modal -->
+    <div class="modal-overlay" id="onboardDfModal">
+        <div class="modal-container" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Onboard New Data Fiduciary</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="onboardDfForm">
+                <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+                    <div class="form-group">
+                        <label for="dfName" class="ark-label">Organization Name <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="text" id="dfName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dfAdminEmail" class="ark-label">Initial DF Admin Email <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="email" id="dfAdminEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dfAdminName" class="ark-label">Initial DF Admin Name <span style="color: var(--ark-red-500);">*</span></label>
+                        <input type="text" id="dfAdminName" class="form-control" required>
+                    </div>
+                     <div class="row" style="display: flex; gap: var(--space-md);">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="maxAdminUsers" class="ark-label">Max Admin Users</label>
+                            <input type="number" id="maxAdminUsers" class="form-control" value="1" min="1">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="maxDpoUsers" class="ark-label">Max DPO Users</label>
+                            <input type="number" id="maxDpoUsers" class="form-control" value="1" min="0">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="maxOperatorUsers" class="ark-label">Max Operator Users</label>
+                            <input type="number" id="maxOperatorUsers" class="form-control" value="5" min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="isSdf">
+                            <label class="form-check-label" for="isSdf">Significant Data Fiduciary (SDF)</label>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="initialStatus" class="ark-label">Initial Status</label>
+                        <select id="initialStatus" class="form-control">
+                            <option value="pending">Pending Setup</option>
+                            <option value="active">Active</option>
+                        </select>
+                    </div>
+                    <h4 class="ark-h4 mt-3">Optional Details:</h4>
+                     <div class="form-group">
+                        <label for="regDetails" class="ark-label">Registration Details</label>
+                        <input type="text" id="regDetails" class="form-control">
+                    </div>
+                     <div class="form-group">
+                        <label for="contactPerson" class="ark-label">Contact Person Name</label>
+                        <input type="text" id="contactPerson" class="form-control">
+                    </div>
+                     <div class="form-group">
+                        <label for="contactEmail" class="ark-label">Contact Person Email</label>
+                        <input type="email" id="contactEmail" class="form-control">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Onboard Data Fiduciary</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit DF Config Modal -->
+    <div class="modal-overlay" id="editDfConfigModal">
+        <div class="modal-container" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 class="modal-title ark-h3">Edit Configuration for [DF Name]</h3>
+                <button class="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+            </div>
+            <form id="editDfConfigForm">
+                <div class="modal-body">
+                    <p><strong>Organization Name:</strong> [Example Corp] (Read-only)</p>
+                    <p><strong>Tenant ID:</strong> [df_tenant_001] (Read-only)</p>
+                    <hr class="my-3">
+                    <div class="form-group">
+                        <label for="editMaxAdmin" class="ark-label">Max Admin Users</label>
+                        <input type="number" id="editMaxAdmin" class="form-control" value="1">
+                    </div>
+                     <div class="form-group">
+                        <label for="editMaxDpo" class="ark-label">Max DPO Users</label>
+                        <input type="number" id="editMaxDpo" class="form-control" value="1">
+                    </div>
+                     <div class="form-group">
+                        <label for="editMaxOperator" class="ark-label">Max Operator Users</label>
+                        <input type="number" id="editMaxOperator" class="form-control" value="5">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="editIsSdf">
+                            <label class="form-check-label" for="editIsSdf">Significant Data Fiduciary (SDF)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Configuration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("Super Admin");
+        // Mock form submissions
+        document.getElementById('onboardDfForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Data Fiduciary onboarded (Mock).');
+            this.closest('.modal-overlay').classList.remove('active');
+        });
+        document.getElementById('editDfConfigForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('DF Configuration saved (Mock).');
+            this.closest('.modal-overlay').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

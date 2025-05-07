@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purpose & Data Category Review - Ark CMS</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <img src="../assets/images/ark_logo.png" alt="Ark CMS Logo" class="logo">
+            <nav class="sidebar-nav">
+                <span class="nav-section-title">[Data Fiduciary Name] - DPO</span>
+                <ul>
+                    <li><a href="df_dpo_dashboard.html"><span class="material-symbols-outlined">dashboard</span> Dashboard</a></li>
+                </ul>
+                <span class="nav-section-title">Compliance Monitoring</span>
+                <ul>
+                    <li><a href="df_dpo_consent_records.html"><span class="material-symbols-outlined">folder_managed</span> Consent Records</a></li>
+                    <li><a href="df_dpo_notice_configs.html"><span class="material-symbols-outlined">preview</span> Notice Configurations</a></li>
+                    <li><a href="df_dpo_purpose_category_review.html" class="active"><span class="material-symbols-outlined">checklist_rtl</span> Purpose & Data Cat.</a></li>
+                </ul>
+                <!-- ... other DPO nav items ... -->
+                 <div class="sidebar-footer" style="margin-top: auto;">
+                     <a href="df_dpo_login.html" class="btn btn-secondary btn-full-width"><span class="material-symbols-outlined">logout</span> Logout</a>
+                </div>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header class="app-header">
+                 <div class="hamburger-menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <h1 class="page-title">Purpose & Data Category Review</h1>
+                 <div class="user-menu">
+                    <div class="user-menu-trigger">
+                        <div class="avatar">PO</div>
+                        <span class="user-name-display ark-body-default">[DF DPO Name]</span>
+                        <span class="material-symbols-outlined">arrow_drop_down</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <a href="#">My Profile</a>
+                        <a href="df_dpo_login.html">Logout</a>
+                    </div>
+                </div>
+            </header>
+
+            <div class="tabs">
+                <div class="tab-list">
+                    <div class="tab-item active" data-tab="purposesReviewTab">Purposes</div>
+                    <div class="tab-item" data-tab="categoriesReviewTab">Data Categories</div>
+                </div>
+                <div>
+                    <div class="tab-panel active" id="purposesReviewTab">
+                        <h3 class="ark-h3 mb-3">Review Defined Purposes</h3>
+                        <div class="card table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Purpose Code</th>
+                                        <th>Description (Short)</th>
+                                        <th>Sensitive Data Flag</th>
+                                        <th>Retention Period</th>
+                                        <th>Linked Data Categories</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ACC_MGMT</td>
+                                        <td>[Account Creation & Management]</td>
+                                        <td>No</td>
+                                        <td>[While account active + 1yr]</td>
+                                        <td>3</td>
+                                        <td><a href="df_dpo_purpose_details_review.html?id=ACC_MGMT" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span> Review Details</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>MKTG_EMAIL</td>
+                                        <td>[Marketing Email Communications]</td>
+                                        <td>No</td>
+                                        <td>[Until unsubscribed]</td>
+                                        <td>2</td>
+                                        <td><a href="df_dpo_purpose_details_review.html?id=MKTG_EMAIL" class="btn btn-sm btn-subtle"><span class="material-symbols-outlined icon-only">visibility</span> Review Details</a></td>
+                                    </tr>
+                                    <!-- More purpose rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                         <div class="pagination mt-3">
+                            <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                            <span class="ark-body-default">Page 1 of 1</span>
+                            <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="categoriesReviewTab">
+                        <h3 class="ark-h3 mb-3">Review Defined Data Categories</h3>
+                        <div class="card table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Category Code</th>
+                                        <th>Description</th>
+                                        <th>Sensitive Data Flag</th>
+                                        <th>Used in Purposes (Count)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>EMAIL</td>
+                                        <td>[Email Address]</td>
+                                        <td>No</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>FULL_NAME</td>
+                                        <td>[Full Name]</td>
+                                        <td>No</td>
+                                        <td>4</td>
+                                    </tr>
+                                     <tr>
+                                        <td>HEALTH_DATA</td>
+                                        <td>[Health Records Information]</td>
+                                        <td>Yes</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <!-- More category rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                         <div class="pagination mt-3">
+                            <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_left</span></button>
+                            <span class="ark-body-default">Page 1 of 1</span>
+                            <button class="btn btn-subtle" disabled><span class="material-symbols-outlined icon-only">chevron_right</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        populateUserSpecificElements("DF DPO Name");
+    </script>
+</body>
+</html>
